@@ -4,7 +4,7 @@
 
 Licensed under the MIT License (MIT). See LICENSE file for more details.
 
-## Metadata (used for search, rendering)
+## Supported targets
 
 * for PXT/microbit
 
