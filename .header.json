@@ -1,6 +1,6 @@
 {
     "target": "microbit",
-    "targetVersion": "0.0.1",
+    "targetVersion": "3.1.1",
     "name": "yfrobotdemo",
     "meta": {},
     "editor": "tsprj",
@@ -8,13 +8,13 @@
     "pubCurrent": false,
     "_rev": null,
     "id": "f1f5781f-94f0-4f62-44a6-1d42146044ba",
-    "recentUse": 1591085664,
-    "modificationTime": 1591085662,
+    "recentUse": 1591091253,
+    "modificationTime": 1591091253,
     "blobId": null,
     "blobVersion": null,
     "blobCurrent": false,
     "isDeleted": false,
-    "path": "pxt-yfrobot-demo/pxt-yfrobot-demo",
+    "path": "pxt-yfrobot-demo",
     "githubCurrent": false,
     "saveId": null
 }
