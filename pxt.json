@@ -1,7 +1,7 @@
 {
-    "name": "robotbit",
-    "version": "0.3.5",
-    "description": "Extension for Kittenbot Robotbit",
+    "name": "yfrobotdemo",
+    "version": "0.0.1",
+    "description": "Extension for YFRobot Demo",
     "license": "MIT",
     "dependencies": {
         "core": "*",
@@ -10,8 +10,8 @@
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh-cn/robotbit-strings.json",
-        "_locales/zh-tw/robotbit-strings.json"
+        "_locales/zh-cn/demo-strings.json",
+        "_locales/zh-tw/demo-strings.json"
     ],
     "testFiles": [
         "test.ts"
