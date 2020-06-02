@@ -1,0 +1,19 @@
+{
+    "yfrobotdemo.Servo|block": "9g舵机|%index|角度 %degree",
+    "yfrobotdemo.GeekServo|block": "Geekservo|9g舵机|%index|角度 %degree",
+    "yfrobotdemo.GeekServo2KG|block": "2KG舵机|%index|角度 %degree",
+    "yfrobotdemo.StepperDegree|block": "步进 28BYJ-48|%index|角度 %degree",
+    "yfrobotdemo.StepperTurn|block": "步进 28BYJ-48|%index|圈数 %turn",
+    "yfrobotdemo.StepperDual|block": "双步进(角度) |M1 %degree1| M2 %degree2",
+    "yfrobotdemo.StpCarMove|block": "步进小车 前进 |距离(cm) %distance|轮直径(mm) %diameter",
+    "yfrobotdemo.StpCarTurn|block": "步进小车 转向 |角度 %turn|轮直径(mm) %diameter|轮距(mm) %track",
+    "yfrobotdemo.MotorRun|block": "电机|%index|速度 %speed",
+    "yfrobotdemo.MotorRunDual|block": "电机|%motor1|速度 %speed1|%motor2|速度 %speed2",
+    "yfrobotdemo.MotorRunDelay|block": "电机|%index|速度 %speed|延时 %delay|s",
+    "yfrobotdemo.MotorStop|block": "电机 停止|%index|",
+    "yfrobotdemo.MotorStopAll|block": "停止所有电机",
+    "yfrobotdemo.RgbUltrasonic|block": "猫耳RGB超声波|引脚 %pin",
+    "yfrobotdemo.HoleUltrasonic|block": "猫耳洞超声波|引脚 %pin",
+    "yfrobotdemo.MatrixDraw|block": "LED矩阵 描点|X %x|Y %y",
+    "yfrobotdemo.MatrixClear|block": "清空 LED矩阵 "
+}
