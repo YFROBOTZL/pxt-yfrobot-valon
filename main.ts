@@ -1,12 +1,11 @@
 /*
-Riven
-modified from pxt-servo/servodriver.ts
-load dependency
-"yfrobotdemo": "file:../pxt-yfrobotdemo"
+YFRobot demo extension for Microbit
+http://www.yfrobot.com
+email: yfrobot@qq.com
 */
 
 
-//% color="#31C7D5" weight=10 icon="\uf1d0"
+//% color="#31C7D5" weight=10 icon="\uf1d1"
 namespace yfrobotdemo {
     const PCA9685_ADDRESS = 0x40
     const MODE1 = 0x00
