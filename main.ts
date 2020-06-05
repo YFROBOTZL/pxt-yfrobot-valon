@@ -223,7 +223,7 @@ namespace valon {
     //% blockId=yfv_stop_motor block="Motor Stop|%motor|"
     //% weight=80
     export function motorStop(motor: YFVMotors): void {
-        MotorRun(motor, 0, 0);
+        motorRun(motor, 0, 0);
     }
 
     /**
