@@ -143,7 +143,7 @@ namespace valon {
      */
 
     //% weight=100
-    //% blockId=yfv_writeLED block="LEDlight |%led turn |%ledswitch"
+    //% blockId=yfv_writeLED block="LEDlight|%led turn|%ledswitch"
     //% led.fieldEditor="gridpicker" led.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: YFVLED, ledswitch: YFVLEDswitch): void {
@@ -191,12 +191,12 @@ namespace valon {
       * @param direction direction to turn
       * @param speed speed of motors (0 to 255). eg: 120
       */
-    //% blockId=yfv_set_motor block="Motor%motor| dir %dir| speed %speed"
+    //% blockId=yfv_set_motor block="Motor|%motor|dir|%dir|speed|%speed"
     //% weight=85
     //% dir.min=0 dir.max=1
     //% speed.min=0 speed.max=255
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=2
-    export function MotorRun(motor: YFVMotors, direction: YFVDir, speed: number): void {
+    export function motorRun(motor: YFVMotors, direction: YFVDir, speed: number): void {
         if (motor > 2 || motor <= 0)
             return
 
@@ -220,7 +220,7 @@ namespace valon {
      */
     //% blockId=yfv_stop_motor block="Motor Stop|%motor|"
     //% weight=80
-    export function MotorStop(motor: YFVMotors): void {
+    export function motorStop(motor: YFVMotors): void {
         MotorRun(motor, 0, 0);
     }
 
@@ -252,7 +252,7 @@ namespace valon {
 
     //% blockId=valon_rgbultrasonic block="Ultrasonic|pin %pin"
     //% weight=10
-    export function RgbUltrasonic(pin: DigitalPin): number {
+    export function rgbUltrasonic(pin: DigitalPin): number {
         pins.setPull(pin, PinPullMode.PullNone);
         pins.digitalWritePin(pin, 0);
         control.waitMicros(2);
@@ -274,7 +274,7 @@ namespace valon {
 
     //% blockId=valon_holeultrasonicver block="Ultrasonic|pin %pin|version %v"
     //% weight=10
-    export function HoleUltrasonic(pin: DigitalPin): number {
+    export function holeUltrasonic(pin: DigitalPin): number {
 
         // send pulse
         pins.setPull(pin, PinPullMode.PullDown);
