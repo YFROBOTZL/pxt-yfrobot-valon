@@ -1,9 +1,11 @@
-/*
-    YFRobot demo extension for Microbit
-    http://www.yfrobot.com/wiki/index.php?title=Valon-I
-    http://www.yfrobot.com
-    Email: yfrobot@qq.com
-*/
+/**
+ * YFRobot valon extension for Microbit
+ * 
+ * http://www.yfrobot.com/wiki/index.php?title=Valon-I
+ * http://www.yfrobot.com
+ * 
+ * @author [email](yfrobot@qq.com)
+ */
 
 enum YFVPingUnit {
     //% block="cm"
