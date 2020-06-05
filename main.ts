@@ -143,9 +143,8 @@ namespace valon {
     /**
      * Turn on/off the LEDs.
      */
-
     //% weight=100
-    //% blockId=yfv_writeLED block="LEDlight |%ledn turn |%ledswitch"
+    //% blockId=valon_writeLED block="LEDlight |%ledn turn |%ledswitch"
     //% ledn.fieldEditor="gridpicker" ledn.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: YFVLED, ledswitch: YFVLEDswitch): void {
@@ -162,19 +161,19 @@ namespace valon {
     /**
      * Read ultrasonic sensor.
      */
-    //% blockId=valon_ultrasonic_sensor block="read ultrasonic sensor |%unit "
     //% weight=95
+    //% blockId=valon_ultrasonic_sensor block="read ultrasonic sensor |%unit "
     export function Ultrasonic(unit: YFVPingUnit, maxCmDistance = 500): number {
         let d
-        pins.digitalWritePin(DigitalPin.P1, 0);
-        if (pins.digitalReadPin(DigitalPin.P2) == 0) {
-            pins.digitalWritePin(DigitalPin.P1, 1);
-            pins.digitalWritePin(DigitalPin.P1, 0);
+        pins.digitalWritePin(DigitalPin.P5, 0);
+        if (pins.digitalReadPin(DigitalPin.P11) == 0) {
+            pins.digitalWritePin(DigitalPin.P5, 1);
+            pins.digitalWritePin(DigitalPin.P5, 0);
             d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 58);
         } else {
-            pins.digitalWritePin(DigitalPin.P1, 0);
-            pins.digitalWritePin(DigitalPin.P1, 1);
-            d = pins.pulseIn(DigitalPin.P2, PulseValue.Low, maxCmDistance * 58);
+            pins.digitalWritePin(DigitalPin.P5, 0);
+            pins.digitalWritePin(DigitalPin.P5, 1);
+            d = pins.pulseIn(DigitalPin.P11, PulseValue.Low, maxCmDistance * 58);
         }
         let x = d / 39;
         if (x <= 0 || x > 500) {
@@ -193,7 +192,7 @@ namespace valon {
       * @param direction direction to turn
       * @param speed speed of motors (0 to 255). eg: 120
       */
-    //% blockId=yfv_set_motor block="Motor|%motor dir|%direction speed|%speed"
+    //% blockId=valon_set_motor block="Motor|%motor dir|%direction speed|%speed"
     //% weight=85
     //% speed.min=0 speed.max=255
     //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2
@@ -221,7 +220,7 @@ namespace valon {
     /**
      * stop the motor
      */
-    //% blockId=yfv_stop_motor block="Motor |%motor Stop"
+    //% blockId=valon_stop_motor block="Motor |%motor Stop"
     //% weight=80
     export function motorStop(motor: YFVMotors): void {
         motorRun(motor, 0, 0);
@@ -238,7 +237,7 @@ namespace valon {
       * Read line tracking sensor.
       */
     //% weight=20
-    //% blockId=yfv_read_Patrol block="read %patrol line tracking sensor"
+    //% blockId=valon_read_Patrol block="read %patrol line tracking sensor"
     //% patrol.fieldEditor="gridpicker" patrol.fieldOptions.columns=2 
     export function readPatrol(patrol: YFVPatrol): number {
         enablePatrol(1);
