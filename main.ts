@@ -148,7 +148,7 @@ namespace valon {
     //% ledn.fieldEditor="gridpicker" ledn.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: YFVLED, ledswitch: YFVLEDswitch): void {
-        led.enable(false); // LED 矩阵屏使能函数
+        led.enable(false); 
         if (ledn == YFVLED.LEDLeft) {
             pins.digitalWritePin(DigitalPin.P10, ledswitch)
         } else if (ledn == YFVLED.LEDRight) {
@@ -166,19 +166,20 @@ namespace valon {
     export function Ultrasonic(unit: YFVPingUnit, maxCmDistance = 500): number {
         let d
 
+        return d;
         // send pulse
-        pins.setPull(DigitalPin.P11, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P5, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P5, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P5, 0);
-        // read pulse
-        d = pins.pulseIn(DigitalPin.P11, PulseValue.High, maxCmDistance * 58);
-        switch (unit) {
-            case YFVPingUnit.Centimeters: return d;
-            default: return d;
-        }
+        // pins.setPull(DigitalPin.P11, PinPullMode.PullNone);
+        // pins.digitalWritePin(DigitalPin.P5, 0);
+        // control.waitMicros(2);
+        // pins.digitalWritePin(DigitalPin.P5, 1);
+        // control.waitMicros(10);
+        // pins.digitalWritePin(DigitalPin.P5, 0);
+        // // read pulse
+        // d = pins.pulseIn(DigitalPin.P11, PulseValue.High, maxCmDistance * 58);
+        // switch (unit) {
+        //     case YFVPingUnit.Centimeters: return d;
+        //     default: return d;
+        // }
         
         // pins.digitalWritePin(DigitalPin.P5, 0);
         // if (pins.digitalReadPin(DigitalPin.P11) == 0) {
