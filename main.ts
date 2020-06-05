@@ -167,7 +167,7 @@ namespace valon {
         let d
 
         // send pulse
-        pins.setPull(DigitalPin.P5, PinPullMode.PullNone);
+        pins.setPull(DigitalPin.P11, PinPullMode.PullNone);
         pins.digitalWritePin(DigitalPin.P5, 0);
         control.waitMicros(2);
         pins.digitalWritePin(DigitalPin.P5, 1);
