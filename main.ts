@@ -166,40 +166,24 @@ namespace valon {
     export function Ultrasonic(unit: YFVPingUnit, maxCmDistance = 500): number {
         let d
 
-        return d;
-        // send pulse
-        // pins.setPull(DigitalPin.P11, PinPullMode.PullNone);
-        // pins.digitalWritePin(DigitalPin.P5, 0);
-        // control.waitMicros(2);
-        // pins.digitalWritePin(DigitalPin.P5, 1);
-        // control.waitMicros(10);
-        // pins.digitalWritePin(DigitalPin.P5, 0);
-        // // read pulse
-        // d = pins.pulseIn(DigitalPin.P11, PulseValue.High, maxCmDistance * 58);
-        // switch (unit) {
-        //     case YFVPingUnit.Centimeters: return d;
-        //     default: return d;
-        // }
-        
-        // pins.digitalWritePin(DigitalPin.P5, 0);
-        // if (pins.digitalReadPin(DigitalPin.P11) == 0) {
-        //     pins.digitalWritePin(DigitalPin.P5, 1);
-        //     pins.digitalWritePin(DigitalPin.P5, 0);
-        //     d = pins.pulseIn(DigitalPin.P11, PulseValue.High, maxCmDistance * 58);
-        // } else {
-        //     pins.digitalWritePin(DigitalPin.P5, 0);
-        //     pins.digitalWritePin(DigitalPin.P5, 1);
-        //     d = pins.pulseIn(DigitalPin.P11, PulseValue.Low, maxCmDistance * 58);
-        // }
-        // let x = d / 39;
-        // if (x <= 0 || x > 500) {
-        //     return 0;
-        // }
-        // switch (unit) {
-        //     case PingUnit.Centimeters: return Math.round(x);
-        //     default: return Math.idiv(d, 2.54);
-        // }
-        
+        pins.digitalWritePin(DigitalPin.P5, 0);
+        if (pins.digitalReadPin(DigitalPin.P11) == 0) {
+            pins.digitalWritePin(DigitalPin.P5, 1);
+            pins.digitalWritePin(DigitalPin.P5, 0);
+            d = pins.pulseIn(DigitalPin.P11, PulseValue.High, maxCmDistance * 58);
+        } else {
+            pins.digitalWritePin(DigitalPin.P5, 0);
+            pins.digitalWritePin(DigitalPin.P5, 1);
+            d = pins.pulseIn(DigitalPin.P11, PulseValue.Low, maxCmDistance * 58);
+        }
+        let x = d / 39;
+        if (x <= 0 || x > 500) {
+            return 0;
+        }
+        switch (unit) {
+            case YFVPingUnit.Centimeters: return Math.round(x);
+            default: return Math.idiv(d, 2.54);
+        }
     }
 
     /**
