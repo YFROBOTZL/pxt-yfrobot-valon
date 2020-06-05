@@ -22,7 +22,6 @@ namespace valon {
     let yfMotorRA = AnalogPin.P16;
 
 
-
     let initialized = false
     let initializedMatrix = false
     let neoStrip: neopixel.Strip;
@@ -145,7 +144,7 @@ namespace valon {
      */
 
     //% weight=100
-    //% blockId=yfv_writeLED block="LEDlight |%ledn turn |%ledswitch"
+    //% blockId=valon_writeLED block="LEDlight |%ledn turn |%ledswitch"
     //% ledn.fieldEditor="gridpicker" ledn.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: YFVLED, ledswitch: YFVLEDswitch): void {
@@ -193,7 +192,7 @@ namespace valon {
       * @param direction direction to turn
       * @param speed speed of motors (0 to 255). eg: 120
       */
-    //% blockId=yfv_set_motor block="Motor|%motor dir|%direction speed|%speed"
+    //% blockId=valon_motor_run block="Motor|%motor dir|%direction speed|%speed"
     //% weight=85
     //% speed.min=0 speed.max=255
     //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2
@@ -221,7 +220,7 @@ namespace valon {
     /**
      * stop the motor
      */
-    //% blockId=yfv_stop_motor block="Motor |%motor Stop"
+    //% blockId=valon_stop_motor block="Motor |%motor Stop"
     //% weight=80
     export function motorStop(motor: YFVMotors): void {
         motorRun(motor, 0, 0);
@@ -238,7 +237,7 @@ namespace valon {
       * Read line tracking sensor.
       */
     //% weight=20
-    //% blockId=yfv_read_Patrol block="read %patrol line tracking sensor"
+    //% blockId=valon_read_Patrol block="read %patrol line tracking sensor"
     //% patrol.fieldEditor="gridpicker" patrol.fieldOptions.columns=2 
     export function readPatrol(patrol: YFVPatrol): number {
         enablePatrol(1);
@@ -299,7 +298,4 @@ namespace valon {
 
         return Math.floor(ret / 40 + (ret / 800));
     }
-
-
-
 }
