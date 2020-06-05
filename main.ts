@@ -12,81 +12,6 @@ enum YFVPingUnit {
     Centimeters,
 }
 
-// Motor
-enum YFVMotors {
-    //% blockId="yf_left_motor" block="left"
-    ML = 0,
-    //% blockId="yf_right_motor" block="right"
-    MR = 1,
-    //% blockId="yf_all_motor" block="all"
-    MAll = 2
-}
-
-// motor dir
-enum YFVDir {
-    //% blockId="CW" block="Forward"
-    CW = 0x0,
-    //% blockId="CCW" block="Backward"
-    CCW = 0x1
-}
-
-enum YFVLED {
-    //% blockId="yf_LEDLeft" block="left"
-    LEDLeft = 10,
-    //% blockId="yf_LEDRight" block="right"
-    LEDRight = 9
-}
-
-enum YFVLEDswitch {
-    //% blockId="yf_LEDturnOn" block="ON"
-    turnOn = 0x01,
-    //% blockId="yf_LEDturnOff" block="OFF"
-    turnOff = 0x00
-}
-
-// Patrol
-enum YFVPatrol {
-    //% blockId="yf_patrolLeft" block="left"
-    PatrolLeft = 1,
-    //% blockId="yf_patrolMiddle" block="middle"
-    PatrolMiddle = 2,
-    //% blockId="yf_patrolRight" block="right"
-    PatrolRight = 8
-}
-
-enum YFVSonarVersion {
-    V1 = 0x1,
-    V2 = 0x2
-}
-
-enum YFVTurns {
-    //% blockId="T1B4" block="1/4"
-    T1B4 = 90,
-    //% blockId="T1B2" block="1/2"
-    T1B2 = 180,
-    //% blockId="T1B0" block="1"
-    T1B0 = 360,
-    //% blockId="T2B0" block="2"
-    T2B0 = 720,
-    //% blockId="T3B0" block="3"
-    T3B0 = 1080,
-    //% blockId="T4B0" block="4"
-    T4B0 = 1440,
-    //% blockId="T5B0" block="5"
-    T5B0 = 1800
-}
-
-enum YFVServos {
-    S1 = 0x01,
-    S2 = 0x02,
-    S3 = 0x03,
-    S4 = 0x04,
-    S5 = 0x05,
-    S6 = 0x06,
-    S7 = 0x07,
-    S8 = 0x08
-}
-
 //% color="#31C7D5" weight=10 icon="\uf1d4"
 namespace valon {
 
@@ -103,6 +28,81 @@ namespace valon {
     let neoStrip: neopixel.Strip;
     let matBuf = pins.createBuffer(17);
     let distanceBuf = 0;
+
+    // Motor
+    export enum YFVMotors {
+        //% blockId="yf_left_motor" block="left"
+        ML = 0,
+        //% blockId="yf_right_motor" block="right"
+        MR = 1,
+        //% blockId="yf_all_motor" block="all"
+        MAll = 2
+    }
+
+    // motor dir
+    export enum YFVDir {
+        //% blockId="CW" block="Forward"
+        CW = 0x0,
+        //% blockId="CCW" block="Backward"
+        CCW = 0x1
+    }
+
+    export enum YFVLED {
+        //% blockId="yf_LEDLeft" block="left"
+        LEDLeft = 10,
+        //% blockId="yf_LEDRight" block="right"
+        LEDRight = 9
+    }
+
+    export enum YFVLEDswitch {
+        //% blockId="yf_LEDturnOn" block="ON"
+        turnOn = 0x01,
+        //% blockId="yf_LEDturnOff" block="OFF"
+        turnOff = 0x00
+    }
+
+    // Patrol
+    export enum YFVPatrol {
+        //% blockId="yf_patrolLeft" block="left"
+        PatrolLeft = 1,
+        //% blockId="yf_patrolMiddle" block="middle"
+        PatrolMiddle = 2,
+        //% blockId="yf_patrolRight" block="right"
+        PatrolRight = 8
+    }
+
+    export enum YFVSonarVersion {
+        V1 = 0x1,
+        V2 = 0x2
+    }
+
+    export enum YFVTurns {
+        //% blockId="T1B4" block="1/4"
+        T1B4 = 90,
+        //% blockId="T1B2" block="1/2"
+        T1B2 = 180,
+        //% blockId="T1B0" block="1"
+        T1B0 = 360,
+        //% blockId="T2B0" block="2"
+        T2B0 = 720,
+        //% blockId="T3B0" block="3"
+        T3B0 = 1080,
+        //% blockId="T4B0" block="4"
+        T4B0 = 1440,
+        //% blockId="T5B0" block="5"
+        T5B0 = 1800
+    }
+
+    export enum YFVServos {
+        S1 = 0x01,
+        S2 = 0x02,
+        S3 = 0x03,
+        S4 = 0x04,
+        S5 = 0x05,
+        S6 = 0x06,
+        S7 = 0x07,
+        S8 = 0x08
+    }
 
     function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
