@@ -193,11 +193,11 @@ namespace valon {
       * @param direction direction to turn
       * @param speed speed of motors (0 to 255). eg: 120
       */
-    //% blockId=yfv_set_motor block="Motor|%motor|dir|%dir|speed|%speed"
+    //% blockId=yfv_set_motor block="Motor|%motor dir|%direction speed|%speed"
     //% weight=85
-    //% dir.min=0 dir.max=1
     //% speed.min=0 speed.max=255
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=2
+    //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2
+    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function motorRun(motor: YFVMotors, direction: YFVDir, speed: number): void {
         if (motor > 2 || motor <= 0)
             return
@@ -217,10 +217,11 @@ namespace valon {
             pins.analogWritePin(yfMotorLA, speed);
         }
     }
+
     /**
      * stop the motor
      */
-    //% blockId=yfv_stop_motor block="Motor Stop|%motor|"
+    //% blockId=yfv_stop_motor block="Motor |%motor Stop"
     //% weight=80
     export function motorStop(motor: YFVMotors): void {
         motorRun(motor, 0, 0);
@@ -237,7 +238,7 @@ namespace valon {
       * Read line tracking sensor.
       */
     //% weight=20
-    //% blockId=yfv_read_Patrol block="read %patrol| line tracking sensor"
+    //% blockId=yfv_read_Patrol block="read %patrol line tracking sensor"
     //% patrol.fieldEditor="gridpicker" patrol.fieldOptions.columns=2 
     export function readPatrol(patrol: YFVPatrol): number {
         enablePatrol(1);
