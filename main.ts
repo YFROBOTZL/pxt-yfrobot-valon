@@ -42,22 +42,22 @@ namespace valon {
     // motor dir
     export enum YFVDir {
         //% blockId="yf_CW" block="Forward"
-        CW = 0x0,
+        CW = 0,
         //% blockId="yf_CCW" block="Backward"
-        CCW = 0x1
+        CCW = 0
     }
 
     export enum YFVLED {
-        //% blockId="yf_LEDLeft" block="left"
+        //% blockId="LEDLeft" block="left"
         LEDLeft = 10,
-        //% blockId="yf_LEDRight" block="right"
+        //% blockId="LEDRight" block="right"
         LEDRight = 9
     }
 
     export enum YFVLEDswitch {
-        //% blockId="yf_LEDturnOn" block="ON"
+        //% blockId="LEDturnOn" block="ON"
         turnOn = 0x01,
-        //% blockId="yf_LEDturnOff" block="OFF"
+        //% blockId="LEDturnOff" block="OFF"
         turnOff = 0x00
     }
 
