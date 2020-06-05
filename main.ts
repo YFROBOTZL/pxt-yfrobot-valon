@@ -41,9 +41,9 @@ namespace valon {
 
     // motor dir
     export enum YFVDir {
-        //% blockId="CW" block="Forward"
+        //% blockId="yf_CW" block="Forward"
         CW = 0x0,
-        //% blockId="CCW" block="Backward"
+        //% blockId="yf_CCW" block="Backward"
         CCW = 0x1
     }
 
