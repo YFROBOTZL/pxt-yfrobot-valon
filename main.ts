@@ -44,7 +44,7 @@ namespace valon {
         //% blockId="yf_CW" block="Forward"
         CW = 0,
         //% blockId="yf_CCW" block="Backward"
-        CCW = 0
+        CCW = 1
     }
 
     export enum YFVLED {
@@ -145,8 +145,8 @@ namespace valon {
      */
 
     //% weight=100
-    //% blockId=yfv_writeLED block="LEDlight|%ledn|turn|%ledswitch"
-    //% led.fieldEditor="gridpicker" led.fieldOptions.columns=2 
+    //% blockId=yfv_writeLED block="LEDlight |%ledn turn |%ledswitch"
+    //% ledn.fieldEditor="gridpicker" ledn.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: YFVLED, ledswitch: YFVLEDswitch): void {
         led.enable(false);
