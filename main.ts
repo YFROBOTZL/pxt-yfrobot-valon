@@ -197,7 +197,7 @@ namespace valon {
     //% weight=85
     //% speed.min=0 speed.max=255
     //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2
-    //direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
+    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function motorRun(motor: YFVMotors, direction: YFVDir, speed: number): void {
         if (motor > 2 || motor <= 0)
             return
