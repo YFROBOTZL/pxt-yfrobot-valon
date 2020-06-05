@@ -1,7 +1,7 @@
 {
     "name": "valon",
     "version": "0.0.1",
-    "description": "Extension for YFRobot Demo",
+    "description": "Extension for YFRobot Valon",
     "license": "MIT",
     "dependencies": {
         "core": "*",
