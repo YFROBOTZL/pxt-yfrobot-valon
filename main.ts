@@ -20,15 +20,13 @@ enum YFVMotors {
     MAll = 2
 }
 
-// 电机方向
+// motor dir
 enum YFVDir {
     //% blockId="CW" block="Forward"
     CW = 0x0,
     //% blockId="CCW" block="Backward"
     CCW = 0x1
 }
-
-
 
 enum YFVLED {
     //% blockId="yf_LEDLeft" block="left"
@@ -44,14 +42,7 @@ enum YFVLEDswitch {
     turnOff = 0x00
 }
 
-// 巡线
-// enum YFVEnablePatrol {
-//     //% blockId="yf_LEDturnOn" block="ON"
-//     turnOn = 0x01,
-//     //% blockId="yf_LEDturnOff" block="OFF"
-//     turnOff = 0x00
-// }
-
+// Patrol
 enum YFVPatrol {
     //% blockId="yf_patrolLeft" block="left"
     PatrolLeft = 1,
@@ -95,7 +86,7 @@ enum YFVServos {
 }
 
 //% color="#31C7D5" weight=10 icon="\uf1d4"
-namespace yfrobotdemo {
+namespace valon {
 
     // motor pin 
     let yfMotorLD = DigitalPin.P13;
@@ -134,12 +125,11 @@ namespace yfrobotdemo {
         return Math.max(Math.min(max, value), min);
     }
 
-    
 
     /**
-     * Init RGB pixels mounted on yfrobotdemo
+     * Init RGB pixels mounted on valon
      */
-    //% blockId="yfrobotdemo_rgb" block="RGB"
+    //% blockId="valon_rgb" block="RGB"
     //% weight=5
     export function rgb(): neopixel.Strip {
         if (!neoStrip) {
@@ -170,7 +160,7 @@ namespace yfrobotdemo {
     /**
      * Read ultrasonic sensor.
      */
-    //% blockId=yfrobotdemo_ultrasonic_sensor block="read ultrasonic sensor |%unit "
+    //% blockId=valon_ultrasonic_sensor block="read ultrasonic sensor |%unit "
     //% weight=95
     export function Ultrasonic(unit: YFVPingUnit, maxCmDistance = 500): number {
         let d
@@ -260,7 +250,7 @@ namespace yfrobotdemo {
         }
     }
 
-    //% blockId=yfrobotdemo_rgbultrasonic block="Ultrasonic|pin %pin"
+    //% blockId=valon_rgbultrasonic block="Ultrasonic|pin %pin"
     //% weight=10
     export function RgbUltrasonic(pin: DigitalPin): number {
         pins.setPull(pin, PinPullMode.PullNone);
@@ -282,7 +272,7 @@ namespace yfrobotdemo {
         return Math.floor(ret * 9 / 6 / 58);
     }
 
-    //% blockId=yfrobotdemo_holeultrasonicver block="Ultrasonic|pin %pin|version %v"
+    //% blockId=valon_holeultrasonicver block="Ultrasonic|pin %pin|version %v"
     //% weight=10
     export function HoleUltrasonic(pin: DigitalPin): number {
 
