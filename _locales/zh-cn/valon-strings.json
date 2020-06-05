@@ -11,7 +11,7 @@
     "valon.YFVLEDswitch.turnOff|block": "闭",
     "valon.YFVLED.LEDLeft|block": "左侧",
     "valon.YFVLED.LEDRight|block": "右侧",
-	"valon.writeLED|block": "LED灯|%led|%ledswitch",
+	"valon.writeLED|block": "LED灯|%ledn|%ledswitch",
     "valon.motorStop|block": "电机 停止|%motors",
     "valon.motorRun|block": "电机|%motor|方向|%dir|速度|%speed",
     "valon.Ultrasonic|block": "超声波距离|%unit",

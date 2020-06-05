@@ -145,7 +145,7 @@ namespace valon {
      */
 
     //% weight=100
-    //% blockId=yfv_writeLED block="LEDlight|%led turn|%ledswitch"
+    //% blockId=yfv_writeLED block="LEDlight|%ledn|turn|%ledswitch"
     //% led.fieldEditor="gridpicker" led.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: YFVLED, ledswitch: YFVLEDswitch): void {
