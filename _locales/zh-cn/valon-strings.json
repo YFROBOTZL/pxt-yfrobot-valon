@@ -15,12 +15,5 @@
     "valon.motorStop|block": "电机 停止|%motors",
     "valon.motorRun|block": "电机|%motor|方向|%dir|速度|%speed",
     "valon.Ultrasonic|block": "超声波距离|%unit",
-    "valon.readPatrol|block": "巡线传感器|%patrol",
-    "valon.YFVVoltage.High|block":"高",
-    "valon.YFVVoltage.Low|block":"低",
-    "valon.YFVltEvent|block":"当|%value巡线传感器|%vi",
-    "valon.YFVIR_callbackUser|block": "当接收到红外时运行",
-    "valon.YFVIR_read|block": "红外的值",
-    "valon.YFVservoRun|block": "舵机|%index|角度|%angle",
-    "valon.YFVIR_read_version|block": "获取产品信息",
+    "valon.readPatrol|block": "巡线传感器|%patrol"
 }

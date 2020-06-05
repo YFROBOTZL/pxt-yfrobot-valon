@@ -15,12 +15,5 @@
     "valon.motorStop|block": "馬達停止|%motors",
     "valon.motorRun|block": "馬達|%index|方向|%Dir|速度|%speed",    
     "valon.Ultrasonic|block": "超音波距離|%unit",
-    "valon.readPatrol|block": "循跡感測器|%patrol",
-    "valon.YFVVoltage.High|block": "高",
-    "valon.YFVVoltage.Low|block": "低",
-    "valon.YFVltEvent|block": "當|%value巡線傳感器|%vi",
-    "valon.YFVIR_callbackUser|block": "當接收到紅外線時運行",
-    "valon.YFVIR_read|block": "紅外線數值",
-    "valon.YFVservoRun|block": "舵機|%index|角度|%angle",
-    "valon.YFVIR_read_version|block": "獲取產品訊息",
+    "valon.readPatrol|block": "循跡感測器|%patrol"
 }
