@@ -163,28 +163,28 @@ namespace valon {
      */
     //% weight=95
     //% blockId=valon_ultrasonic_sensor block="read ultrasonic sensor |%unit "
-    export function Ultrasonic(unit: YFVPingUnit, maxCmDistance = 500): number {
-        let d
+    // export function Ultrasonic(unit: YFVPingUnit, maxCmDistance = 500): number {
+    //     let d
 
-        pins.digitalWritePin(DigitalPin.P5, 0);
-        if (pins.digitalReadPin(DigitalPin.P11) == 0) {
-            pins.digitalWritePin(DigitalPin.P5, 1);
-            pins.digitalWritePin(DigitalPin.P5, 0);
-            d = pins.pulseIn(DigitalPin.P11, PulseValue.High, maxCmDistance * 58);
-        } else {
-            pins.digitalWritePin(DigitalPin.P5, 0);
-            pins.digitalWritePin(DigitalPin.P5, 1);
-            d = pins.pulseIn(DigitalPin.P11, PulseValue.Low, maxCmDistance * 58);
-        }
-        let x = d / 39;
-        if (x <= 0 || x > 500) {
-            return 0;
-        }
-        switch (unit) {
-            case YFVPingUnit.Centimeters: return Math.round(x);
-            default: return Math.idiv(d, 2.54);
-        }
-    }
+    //     pins.digitalWritePin(DigitalPin.P5, 0);
+    //     if (pins.digitalReadPin(DigitalPin.P11) == 0) {
+    //         pins.digitalWritePin(DigitalPin.P5, 1);
+    //         pins.digitalWritePin(DigitalPin.P5, 0);
+    //         d = pins.pulseIn(DigitalPin.P11, PulseValue.High, maxCmDistance * 58);
+    //     } else {
+    //         pins.digitalWritePin(DigitalPin.P5, 0);
+    //         pins.digitalWritePin(DigitalPin.P5, 1);
+    //         d = pins.pulseIn(DigitalPin.P11, PulseValue.Low, maxCmDistance * 58);
+    //     }
+    //     let x = d / 39;
+    //     if (x <= 0 || x > 500) {
+    //         return 0;
+    //     }
+    //     switch (unit) {
+    //         case YFVPingUnit.Centimeters: return Math.round(x);
+    //         default: return Math.idiv(d, 2.54);
+    //     }
+    // }
 
     /**
       * drive the motor in direction at speed
