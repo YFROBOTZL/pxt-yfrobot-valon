@@ -208,8 +208,6 @@ namespace valon {
         return Math.max(Math.min(max, value), min);
     }
 
-
-
     /**
      * Turn on/off the LEDs.
      */
@@ -398,21 +396,35 @@ namespace valon {
         }
 
         /**
-         * Show RGB eyes mounted on valon
-         * @param rgb RGB colour of the pixel
+         * Set LED to a given color (range 0-255 for r, g, b).
+         * You need to call ``show`` to make the changes visible.
+         * @param pixeloffset position of the NeoPixel in the strip
+         * @param rgb RGB color of the LED
          */
-        //% blockId="valon_showColor" block="Eyes |%eyes show color|%rgb=FireColours"
-        //% weight=49
-        //% eyes.fieldEditor="gridpicker" eyes.fieldOptions.columns=2
-        //% color.fieldEditor="gridpicker" color.fieldOptions.columns=4
-        valon_showColor(eyes: ValonRGBEYES, rgb: number): Strip {
-            if (!neoStrip) {
-                neoStrip = valon.create(valonEyesPin, valonEyesNum, valonEyesMode)
-            }
-            neoStrip.setPixelRGB(eyes, rgb);
-            this.show();
-            return neoStrip;
+        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
+        //% strip.defl=strip
+        //% weight=47
+        //% advanced=true
+        setPixelColor(pixeloffset: number, rgb: number): void {
+            this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
         }
+
+        // /**
+        //  * Show RGB eyes mounted on valon
+        //  * @param rgb RGB colour of the pixel
+        //  */
+        // //% blockId="valon_showColor" block="Eyes |%eyes show color|%rgb=FireColours"
+        // //% weight=49
+        // //% eyes.fieldEditor="gridpicker" eyes.fieldOptions.columns=2
+        // //% color.fieldEditor="gridpicker" color.fieldOptions.columns=4
+        // valon_showColor(eyes: ValonRGBEYES, rgb: number): Strip {
+        //     if (!neoStrip) {
+        //         neoStrip = valon.create(valonEyesPin, valonEyesNum, valonEyesMode)
+        //     }
+        //     neoStrip.setPixelRGB(eyes, rgb);
+        //     this.show();
+        //     return neoStrip;
+        // }
 
         /**
          * Displays a vertical bar graph based on the `value` and `high` value.
@@ -451,54 +463,6 @@ namespace valon {
                 }
             }
             this.show();
-        }
-
-        /**
-         * Set LED to a given color (range 0-255 for r, g, b).
-         * You need to call ``show`` to make the changes visible.
-         * @param pixeloffset position of the NeoPixel in the strip
-         * @param rgb RGB color of the LED
-         */
-        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
-        //% strip.defl=strip
-        //% weight=47
-        //% advanced=true
-        setPixelColor(pixeloffset: number, rgb: number): void {
-            this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
-        }
-
-        /**
-         * Sets the number of pixels in a matrix shaped strip
-         * @param width number of pixels in a row
-         */
-        //% blockId=neopixel_set_matrix_width block="%strip|set matrix width %width"
-        //% strip.defl=strip
-        //% weight=46
-        //% advanced=true
-        setMatrixWidth(width: number) {
-            this._matrixWidth = Math.min(this._length, width >> 0);
-        }
-
-        /**
-         * Set LED to a given color (range 0-255 for r, g, b) in a matrix shaped strip
-         * You need to call ``show`` to make the changes visible.
-         * @param x horizontal position
-         * @param y horizontal position
-         * @param rgb RGB color of the LED
-         */
-        //% blockId="neopixel_set_matrix_color" block="%strip|set matrix color at x %x|y %y|to %rgb=neopixel_colors"
-        //% strip.defl=strip
-        //% weight=44
-        //% advanced=true
-        setMatrixColor(x: number, y: number, rgb: number) {
-            if (this._matrixWidth <= 0) return; // not a matrix, ignore
-            x = x >> 0;
-            y = y >> 0;
-            rgb = rgb >> 0;
-            const cols = Math.idiv(this._length, this._matrixWidth);
-            if (x < 0 || x >= this._matrixWidth || y < 0 || y >= cols) return;
-            let i = x + y * this._matrixWidth;
-            this.setPixelColor(i, rgb);
         }
 
         /**
@@ -772,15 +736,15 @@ namespace valon {
         return valon_packRGB(red, green, blue);
     }
 
-    /**
-     * Set the brightness of the eyes.(0~255)
-     * @param brightness a measure of LED brightness in 0-255. eg:255
-     */
-    //% blockId="valon_set_brightness" block="set brightness %brightness" blockGap=8
-    //% weight=4
-    export function setBrightness(brightness: number): void {
-        brightness = brightness & 0xff;
-    }
+    // /**
+    //  * Set the brightness of the eyes.(0~255)
+    //  * @param brightness a measure of LED brightness in 0-255. eg:255
+    //  */
+    // //% blockId="valon_set_brightness" block="set brightness %brightness" blockGap=8
+    // //% weight=4
+    // export function setBrightness(brightness: number): void {
+    //     brightness = brightness & 0xff;
+    // }
 
     /**
      * Converts red, green, blue channels into a RGB color
