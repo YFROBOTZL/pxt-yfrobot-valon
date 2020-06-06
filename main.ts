@@ -16,10 +16,13 @@ enum YFVPingUnit {
 namespace valon {
 
     // motor pin 
-    let yfMotorLD = DigitalPin.P13;
-    let yfMotorLA = AnalogPin.P14;
-    let yfMotorRD = DigitalPin.P15;
-    let yfMotorRA = AnalogPin.P16;
+    let valonMotorLD = DigitalPin.P13;
+    let valonMotorLA = AnalogPin.P14;
+    let valonMotorRD = DigitalPin.P15;
+    let valonMotorRA = AnalogPin.P16;
+    // 
+    let valonUltrasonicTrig = DigitalPin.P5;
+    let valonUltrasonicEcho = DigitalPin.P11;
 
 
     let initialized = false
@@ -219,16 +222,16 @@ namespace valon {
         speed = clamp(speed, 0, 255) * 255.75;  // 0~255 > 0~1023
 
         if (motor == YFVMotors.ML) {
-            pins.digitalWritePin(yfMotorRD, direction);
-            pins.analogWritePin(yfMotorLA, speed);
+            pins.digitalWritePin(valonMotorRD, direction);
+            pins.analogWritePin(valonMotorLA, speed);
         } else if (motor == YFVMotors.MR) {
-            pins.digitalWritePin(yfMotorRD, direction);
-            pins.analogWritePin(yfMotorRA, speed);
+            pins.digitalWritePin(valonMotorRD, direction);
+            pins.analogWritePin(valonMotorRA, speed);
         } else if (motor == YFVMotors.MAll) {
-            pins.digitalWritePin(yfMotorRD, direction);
-            pins.analogWritePin(yfMotorRA, speed);
-            pins.digitalWritePin(yfMotorLD, direction);
-            pins.analogWritePin(yfMotorLA, speed);
+            pins.digitalWritePin(valonMotorRD, direction);
+            pins.analogWritePin(valonMotorRA, speed);
+            pins.digitalWritePin(valonMotorLD, direction);
+            pins.analogWritePin(valonMotorLA, speed);
         }
     }
 
