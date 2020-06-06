@@ -562,34 +562,6 @@ namespace valon {
         }
 
         /**
-         * Shift LEDs forward and clear with zeros.
-         * You need to call ``show`` to make the changes visible.
-         * @param offset number of pixels to shift forward, eg: 1
-         */
-        //% blockId="neopixel_shift" block="%strip|shift pixels by %offset" //% strip.defl=strip
-        //% weight=37
-
-        shift(offset: number = 1): void {
-            offset = offset >> 0;
-            const stride = this._mode === ValonEyesMode.RGBW ? 4 : 3;
-            this.buf.shift(-offset * stride, this.start * stride, this._length * stride)
-        }
-
-        /**
-         * Rotate LEDs forward.
-         * You need to call ``show`` to make the changes visible.
-         * @param offset number of pixels to rotate forward, eg: 1
-         */
-        //% blockId="neopixel_rotate" block="%strip|rotate pixels by %offset" //% strip.defl=strip
-        //% weight=35
-
-        rotate(offset: number = 1): void {
-            offset = offset >> 0;
-            const stride = this._mode === ValonEyesMode.RGBW ? 4 : 3;
-            this.buf.rotate(-offset * stride, this.start * stride, this._length * stride)
-        }
-
-        /**
          * Set the pin where the neopixel is connected, defaults to P0.
          */
         //% weight=33
@@ -598,26 +570,6 @@ namespace valon {
             this.pin = pin;
             pins.digitalWritePin(this.pin, 0);
             // don't yield to avoid races on initialization
-        }
-
-        /**
-         * Estimates the electrical current (mA) consumed by the current light configuration.
-         */
-        //% weight=32 blockId=neopixel_power block="%strip|power (mA)"
-        //% strip.defl=strip
-        //% //% advanced=true
-        power(): number {
-            const stride = this._mode === ValonEyesMode.RGBW ? 4 : 3;
-            const end = this.start + this._length;
-            let p = 0;
-            for (let i = this.start; i < end; ++i) {
-                const ledoffset = i * stride;
-                for (let j = 0; j < stride; ++j) {
-                    p += this.buf[i + j];
-                }
-            }
-            return Math.idiv(this.length() * 7, 10) /* 0.7mA per neopixel */
-                + Math.idiv(p * 480, 10000); /* rought approximation */
         }
 
         private setBufferRGB(offset: number, red: number, green: number, blue: number): void {
@@ -648,21 +600,6 @@ namespace valon {
                 this.setBufferRGB(i * stride, red, green, blue)
             }
         }
-        private setAllW(white: number) {
-            if (this._mode !== ValonEyesMode.RGBW)
-                return;
-
-            let br = this.brightness;
-            if (br < 255) {
-                white = (white * br) >> 8;
-            }
-            let buf = this.buf;
-            let end = this.start + this._length;
-            for (let i = this.start; i < end; ++i) {
-                let ledoffset = i * 4;
-                buf[ledoffset + 3] = white;
-            }
-        }
         private setPixelRGB(pixeloffset: number, rgb: number): void {
             if (pixeloffset < 0
                 || pixeloffset >= this._length)
@@ -682,23 +619,6 @@ namespace valon {
                 blue = (blue * br) >> 8;
             }
             this.setBufferRGB(pixeloffset, red, green, blue)
-        }
-        private setPixelW(pixeloffset: number, white: number): void {
-            if (this._mode !== ValonEyesMode.RGBW)
-                return;
-
-            if (pixeloffset < 0
-                || pixeloffset >= this._length)
-                return;
-
-            pixeloffset = (pixeloffset + this.start) * 4;
-
-            let br = this.brightness;
-            if (br < 255) {
-                white = (white * br) >> 8;
-            }
-            let buf = this.buf;
-            buf[pixeloffset + 3] = white;
         }
     }
     /**
@@ -754,7 +674,7 @@ namespace valon {
      */
     //% weight=27
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
-    //% //% advanced=true
+    //% advanced=true
     export function valon_convertTorgb(red: number, green: number, blue: number): number {
         return valon_packRGB(red, green, blue);
     }
@@ -764,7 +684,7 @@ namespace valon {
      */
     //% weight=25 blockGap=8
     //% blockId="neopixel_colors" block="%color"
-    //% //% advanced=true
+    //% advanced=true
     export function colors(color: ValonColors): number {
         return color;
     }
