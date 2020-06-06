@@ -400,67 +400,26 @@ namespace valon {
          * @param eyes_n position of the NeoPixel in the strip
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_pixel_color" block="%strip|set eyes color at %eyes_n|to %rgb=neopixel_colors"
-        //% strip.defl=strip
+        //% blockId="neopixel_set_pixel_color" block="%eyes|set color at %eyes_n|to %rgb=neopixel_colors"
+        //% strip.defl=eyes
         //% weight=47
-        setPixelColor(eyes_n: ValonRGBEYES, rgb: number): void {
+        setEyesColor(eyes_n: ValonRGBEYES, rgb: number): void {
             this.setPixelRGB(eyes_n , rgb >> 0);
             this.show();
         }
-
-        // /**
-        //  * Show RGB eyes mounted on valon
-        //  * @param rgb RGB colour of the pixel
-        //  */
-        // //% blockId="valon_showColor" block="Eyes |%eyes show color|%rgb=FireColours"
-        // //% weight=49
-        // //% eyes.fieldEditor="gridpicker" eyes.fieldOptions.columns=2
-        // //% color.fieldEditor="gridpicker" color.fieldOptions.columns=4
-        // valon_showColor(eyes: ValonRGBEYES, rgb: number): Strip {
-        //     if (!neoStrip) {
-        //         neoStrip = valon.create(valonEyesPin, valonEyesNum, valonEyesMode)
-        //     }
-        //     neoStrip.setPixelRGB(eyes, rgb);
-        //     this.show();
-        //     return neoStrip;
-        // }
-
         /**
-         * Displays a vertical bar graph based on the `value` and `high` value.
-         * If `high` is 0, the chart gets adjusted automatically.
-         * @param value current value to plot
-         * @param high maximum value, eg: 255
+         * Set LED to a given color (range 0-255 for r, g, b).
+         * You need to call ``show`` to make the changes visible.
+         * @param pixeloffset position of the NeoPixel in the strip
+         * @param rgb RGB color of the LED
          */
-        //% weight=48
-        //% blockId=neopixel_show_bar_graph block="%strip|show bar graph of %value|up to %high"
+        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
         //% strip.defl=strip
-        //% icon="\uf080"
-        showBarGraph(value: number, high: number): void {
-            if (high <= 0) {
-                this.clear();
-                this.setPixelColor(0, ValonColors.Yellow);
-                this.show();
-                return;
-            }
-
-            value = Math.abs(value);
-            const n = this._length;
-            const n1 = n - 1;
-            let v = Math.idiv((value * n), high);
-            if (v == 0) {
-                this.setPixelColor(0, 0x666600);
-                for (let i = 1; i < n; ++i)
-                    this.setPixelColor(i, 0);
-            } else {
-                for (let i = 0; i < n; ++i) {
-                    if (i <= v) {
-                        const b = Math.idiv(i * 255, n1);
-                        this.setPixelColor(i, valon.rgb(b, 0, 255 - b));
-                    }
-                    else this.setPixelColor(i, 0);
-                }
-            }
-            this.show();
+        //% blockGap=8
+        //% weight=80
+        //% parts="neopixel" advanced=true
+        setPixelColor(pixeloffset: number, rgb: number): void {
+            this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
         }
 
         /**
@@ -504,7 +463,7 @@ namespace valon {
          */
         //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" 
         //% strip.defl=strip
-        //% weight=40
+        //% weight=45
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
@@ -572,7 +531,7 @@ namespace valon {
      * @param numleds number of leds in the eyes, eg: 2
      */
     //% blockId="neopixel_create" block="NeoPixel init %numleds|leds as %mode"
-    //% weight=29
+    //% weight=55
     //% trackArgs=0,2
     //% blockSetVariable=eyes
     export function create(numleds: number, mode: ValonEyesMode): Strip {
