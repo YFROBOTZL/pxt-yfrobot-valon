@@ -398,7 +398,7 @@ namespace valon {
         /**
          * Set LED to a given color (range 0-255 for r, g, b).
          * You need to call ``show`` to make the changes visible.
-         * @param pixeloffset position of the NeoPixel in the eyes
+         * @param eyes_n position of the NeoPixel in the eyes
          * @param rgb RGB color of the LED
          */
         //% blockId="neopixel_set_pixel_color" block="%eyes|set pixel color at %eyes_n|to %rgb=neopixel_colors"
