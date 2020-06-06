@@ -575,7 +575,7 @@ namespace valon {
     //% weight=29
     //% trackArgs=0,2
     //% blockSetVariable=eyes
-    export function create(numleds: number, mode: number): Strip {
+    export function create(numleds: number, mode: ValonEyesMode): Strip {
         let eyes = new Strip();
         let stride = mode === ValonEyesMode.RGBW ? 4 : 3;
         eyes.buf = pins.createBuffer(numleds * stride);
