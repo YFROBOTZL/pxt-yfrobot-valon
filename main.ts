@@ -395,18 +395,18 @@ namespace valon {
             this.show();
         }
 
-        /**
-         * Set LED to a given color (range 0-255 for r, g, b).
-         * You need to call ``show`` to make the changes visible.
-         * @param eyes_n position of the NeoPixel in the eyes
-         * @param rgb RGB color of the LED
-         */
-        //% blockId="neopixel_set_pixel_color" block="%eyes|set pixel color at %eyes_n|to %rgb=neopixel_colors"
-        //% eyes.defl=eyes
-        //% weight=47
-        setPixelColor(eyes_n: ValonRGBEYES, rgb: number): void {
-            this.setPixelRGB(eyes_n, rgb >> 0);
-        }
+        // /**
+        //  * Set LED to a given color (range 0-255 for r, g, b).
+        //  * You need to call ``show`` to make the changes visible.
+        //  * @param eyes_n position of the NeoPixel in the eyes
+        //  * @param rgb RGB color of the LED
+        //  */
+        // //% blockId="neopixel_set_pixel_color" block="%eyes|set pixel color at %eyes_n|to %rgb=neopixel_colors"
+        // //% eyes.defl=eyes
+        // //% weight=47
+        // setPixelColor(eyes_n: ValonRGBEYES, rgb: number): void {
+        //     this.setPixelRGB(eyes_n, rgb >> 0);
+        // }
 
         // /**
         //  * Show RGB eyes mounted on valon
