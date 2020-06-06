@@ -405,7 +405,6 @@ namespace valon {
         //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %eyes_n|to %rgb=neopixel_colors"
         //% strip.defl=strip
         //% weight=47
-        //% advanced=true
         setPixelColor(eyes_n: ValonRGBEYES, rgb: number): void {
             this.setPixelRGB(eyes_n , rgb >> 0);
         }
@@ -437,7 +436,6 @@ namespace valon {
         //% blockId=neopixel_show_bar_graph block="%strip|show bar graph of %value|up to %high"
         //% strip.defl=strip
         //% icon="\uf080"
-
         showBarGraph(value: number, high: number): void {
             if (high <= 0) {
                 this.clear();
@@ -506,7 +504,6 @@ namespace valon {
          */
         //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" //% strip.defl=strip
         //% weight=40
-        //% advanced=true
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
