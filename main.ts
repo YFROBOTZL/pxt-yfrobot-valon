@@ -12,6 +12,19 @@ enum YFVPingUnit {
     Centimeters,
 }
 
+enum state {
+    state1 = 0x10,
+    state2 = 0x11,
+    state3 = 0x20,
+    state4 = 0x21,
+    state5 = 0x30,
+    state6 = 0x31
+}
+interface KV {
+    key: state;
+    action: Action;
+}
+
 //% color="#31C7D5" weight=10 icon="\uf1d4"
 namespace valon {
 
@@ -20,10 +33,13 @@ namespace valon {
     let valonMotorLA = AnalogPin.P14;
     let valonMotorRD = DigitalPin.P15;
     let valonMotorRA = AnalogPin.P16;
-    // 
+    // ultrasonic pin
     let valonUltrasonicTrig = DigitalPin.P5;
     let valonUltrasonicEcho = DigitalPin.P11;
-
+    // patrol pin
+    let valonPatrolLeft = DigitalPin.P1;
+    let valonPatrolMiddle = DigitalPin.P2;
+    let valonPatrolRight = DigitalPin.P8;
 
     let initialized = false
     let initializedMatrix = false
@@ -31,21 +47,24 @@ namespace valon {
     let matBuf = pins.createBuffer(17);
     let distanceBuf = 0;
 
+
+    let kbCallback: KV[] = []
+
     // Motor
     export enum YFVMotors {
-        //% blockId="yf_left_motor" block="left"
+        //% blockId="valon_left_motor" block="left"
         ML = 0,
-        //% blockId="yf_right_motor" block="right"
+        //% blockId="valon_right_motor" block="right"
         MR = 1,
-        //% blockId="yf_all_motor" block="all"
+        //% blockId="valon_all_motor" block="all"
         MAll = 2
     }
 
     // motor dir
     export enum YFVDir {
-        //% blockId="yf_CW" block="Forward"
+        //% blockId="valon_CW" block="Forward"
         CW = 0,
-        //% blockId="yf_CCW" block="Backward"
+        //% blockId="valon_CCW" block="Backward"
         CCW = 1
     }
 
@@ -65,17 +84,27 @@ namespace valon {
 
     // Patrol
     export enum YFVPatrol {
-        //% blockId="yf_patrolLeft" block="left"
+        //% blockId="valon_patrolLeft" block="left"
         PatrolLeft = 1,
-        //% blockId="yf_patrolMiddle" block="middle"
+        //% blockId="valon_patrolMiddle" block="middle"
         PatrolMiddle = 2,
-        //% blockId="yf_patrolRight" block="right"
+        //% blockId="valon_patrolRight" block="right"
         PatrolRight = 8
     }
 
-    export enum YFVSonarVersion {
-        V1 = 0x1,
-        V2 = 0x2
+    export enum YFVPatrol1 {
+        //% blockId="valon_patrolLeft" block="left"
+        PatrolLeft = 0x10,
+        //% blockId="valon_patrolMiddle" block="middle"
+        PatrolMiddle = 0x20,
+        //% blockId="valon_patrolRight" block="right"
+        PatrolRight = 0x30
+    }
+    export enum YFVVoltage {
+        //%block="valon_high"
+        High = 0x01,
+        //% block="valon_low"
+        Low = 0x00
     }
 
     export enum YFVTurns {
@@ -128,7 +157,6 @@ namespace valon {
     function clamp(value: number, min: number, max: number): number {
         return Math.max(Math.min(max, value), min);
     }
-
 
     /**
      * Init RGB pixels mounted on valon
@@ -184,7 +212,7 @@ namespace valon {
         if (ret == 0 && distanceBuf != 0) {
             ret = distanceBuf;
         }
-        distanceBuf = d;   
+        distanceBuf = d;
 
         return Math.floor(ret * 9 / 6 / 58);
         // switch (unit) {
@@ -250,13 +278,58 @@ namespace valon {
     export function readPatrol(patrol: YFVPatrol): number {
         enablePatrol(1);
         if (patrol == YFVPatrol.PatrolLeft) {
-            return pins.digitalReadPin(DigitalPin.P1)
+            return pins.digitalReadPin(valonPatrolLeft)
         } else if (patrol == YFVPatrol.PatrolMiddle) {
-            return pins.digitalReadPin(DigitalPin.P2)
+            return pins.digitalReadPin(valonPatrolMiddle)
         } else if (patrol == YFVPatrol.PatrolRight) {
-            return pins.digitalReadPin(DigitalPin.P8)
+            return pins.digitalReadPin(valonPatrolRight)
         } else {
             return -1
         }
     }
+
+    /**
+      * Line tracking sensor event function
+      */
+    //% weight=2
+    //% blockId=valon_kb_event block="on|%value line tracking sensor|%vi"
+    export function ltEvent(value: YFVPatrol1, vi: YFVVoltage, a: Action) {
+        let state = value + vi;
+        serial.writeNumber(state)
+        let item: KV = { key: state, action: a };
+        kbCallback.push(item);
+    }
+    let x: number
+    let i: number = 1;
+    function patorlState(): number {
+        switch (i) {
+            case 1: x = pins.digitalReadPin(DigitalPin.P1) == 0 ? 0x10 : 0; break;
+            case 2: x = pins.digitalReadPin(DigitalPin.P1) == 1 ? 0x11 : 0; break;
+            case 3: x = pins.digitalReadPin(DigitalPin.P2) == 0 ? 0x20 : 0; break;
+            case 4: x = pins.digitalReadPin(DigitalPin.P2) == 1 ? 0x21 : 0; break;
+            case 5: x = pins.digitalReadPin(DigitalPin.P8) == 0 ? 0x30 : 0; break;
+            default: x = pins.digitalReadPin(DigitalPin.P8) == 1 ? 0x31 : 0; break;
+        }
+        i += 1;
+        if (i == 5) i = 1;
+
+        return x;
+    }
+
+    basic.forever(() => {
+        if (kbCallback != null) {
+            let sta = patorlState();
+            if (sta != 0) {
+                for (let item of kbCallback) {
+                    if (item.key == sta) {
+                        item.action();
+                    }
+                }
+            }
+        }
+        basic.pause(50);
+    })
+
+
+
 }
