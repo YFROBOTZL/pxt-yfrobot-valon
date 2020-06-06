@@ -511,6 +511,15 @@ namespace valon {
             this.brightness = brightness & 0xff;
         }
 
+        /**
+         * Set the pin where the neopixel is connected, defaults to P11.
+         */
+        setPin(pin: DigitalPin): void {
+            this.pin = pin;
+            pins.digitalWritePin(this.pin, 11);
+            // don't yield to avoid races on initialization
+        }
+
         private setBufferRGB(offset: number, red: number, green: number, blue: number): void {
             if (this._mode === ValonEyesMode.RGB_RGB) {
                 this.buf[offset + 0] = red;
