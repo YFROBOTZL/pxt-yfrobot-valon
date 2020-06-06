@@ -85,7 +85,7 @@ namespace valon {
     let valonEyesMode = 1; // RGB (GRB format)
 
     let initialized = false
-    let neoStrip: valon.Strip;
+    let neoStrip: valon.Eyes;
     let distanceBuf = 0;
 
 
@@ -370,14 +370,14 @@ namespace valon {
 
 
     /**
-     * A NeoPixel strip
+     * A NeoPixel eyes
      */
-    export class Strip {
+    export class Eyes {
         buf: Buffer;
         pin: DigitalPin;
         // TODO: encode as bytes instead of 32bit
         brightness: number;
-        start: number; // start offset in LED strip
+        start: number; // start offset in LED eyes
         _length: number; // number of LEDs
         _mode: ValonEyesMode;
         _matrixWidth: number; // number of leds in a matrix - if any
@@ -386,8 +386,8 @@ namespace valon {
          * Shows all LEDs to a given color (range 0-255 for r, g, b).
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
-        //% strip.defl=strip
+        //% blockId="neopixel_set_strip_color" block="%eyes|show color %rgb=neopixel_colors"
+        //% eyes.defl=eyes
         //% weight=50
         showColor(rgb: number) {
             rgb = rgb >> 0;
@@ -398,15 +398,14 @@ namespace valon {
         /**
          * Set LED to a given color (range 0-255 for r, g, b).
          * You need to call ``show`` to make the changes visible.
-         * @param pixeloffset position of the NeoPixel in the strip
+         * @param pixeloffset position of the NeoPixel in the eyes
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
-        //% strip.defl=strip
+        //% blockId="neopixel_set_pixel_color" block="%eyes|set pixel color at %eyes_n|to %rgb=neopixel_colors"
+        //% eyes.defl=eyes
         //% weight=47
-        //% advanced=true
-        setPixelColor(pixeloffset: number, rgb: number): void {
-            this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
+        setPixelColor(eyes_n: ValonRGBEYES, rgb: number): void {
+            this.setPixelRGB(eyes_n, rgb >> 0);
         }
 
         // /**
@@ -417,7 +416,7 @@ namespace valon {
         // //% weight=49
         // //% eyes.fieldEditor="gridpicker" eyes.fieldOptions.columns=2
         // //% color.fieldEditor="gridpicker" color.fieldOptions.columns=4
-        // valon_showColor(eyes: ValonRGBEYES, rgb: number): Strip {
+        // valon_showColor(eyes: ValonRGBEYES, rgb: number): Eyes {
         //     if (!neoStrip) {
         //         neoStrip = valon.create(valonEyesPin, valonEyesNum, valonEyesMode)
         //     }
@@ -433,8 +432,8 @@ namespace valon {
          * @param high maximum value, eg: 255
          */
         //% weight=48
-        //% blockId=neopixel_show_bar_graph block="%strip|show bar graph of %value|up to %high"
-        //% strip.defl=strip
+        //% blockId=neopixel_show_bar_graph block="%eyes|show bar graph of %value|up to %high"
+        //% eyes.defl=eyes
         //% icon="\uf080"
 
         showBarGraph(value: number, high: number): void {
@@ -466,9 +465,9 @@ namespace valon {
         }
 
         /**
-         * Send all the changes to the strip.
+         * Send all the changes to the eyes.
          */
-        //% blockId="neopixel_show" block="%strip|show" //% strip.defl=strip
+        //% blockId="neopixel_show" block="%eyes|show" //% eyes.defl=eyes
         //% weight=43
 
         show() {
@@ -481,8 +480,8 @@ namespace valon {
          * Turn off all LEDs.
          * You need to call ``show`` to make the changes visible.
          */
-        //% blockId="neopixel_clear" block="%strip|clear"
-        //% strip.defl=strip
+        //% blockId="neopixel_clear" block="%eyes|clear"
+        //% eyes.defl=eyes
         //% weight=42
 
         clear(): void {
@@ -491,19 +490,19 @@ namespace valon {
         }
 
         /**
-         * Gets the number of pixels declared on the strip
+         * Gets the number of pixels declared on the eyes
          */
-        //% blockId="neopixel_length" block="%strip|length" //% strip.defl=strip
+        //% blockId="neopixel_length" block="%eyes|length" //% eyes.defl=eyes
         //% weight=41 //% advanced=true
         length() {
             return this._length;
         }
 
         /**
-         * Set the brightness of the strip. This flag only applies to future operation.
+         * Set the brightness of the eyes. This flag only applies to future operation.
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" //% strip.defl=strip
+        //% blockId="neopixel_set_brightness" block="%eyes|set brightness %brightness" //% eyes.defl=eyes
         //% weight=40
         //% advanced=true
         setBrightness(brightness: number): void {
@@ -562,23 +561,23 @@ namespace valon {
     /**
      * Create a new NeoPixel driver for `numleds` LEDs.
      * @param pin the pin where the neopixel is connected.
-     * @param numleds number of leds in the strip, eg: 24,30,60,64
+     * @param numleds number of leds in the eyes, eg: 24,30,60,64
      */
     //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds|leds as %mode"
     //% weight=29
     //% trackArgs=0,2
-    //% blockSetVariable=strip
-    export function create(pin: DigitalPin, numleds: number, mode: number): Strip {
-        let strip = new Strip();
+    //% blockSetVariable=eyes
+    export function create(pin: DigitalPin, numleds: number, mode: number): Eyes {
+        let eyes = new Eyes();
         let stride = mode === ValonEyesMode.RGBW ? 4 : 3;
-        strip.buf = pins.createBuffer(numleds * stride);
-        strip.start = 0;
-        strip._length = numleds;
-        strip._mode = mode || ValonEyesMode.RGB;
-        strip._matrixWidth = 0;
-        strip.setBrightness(128)
-        strip.setPin(pin)
-        return strip;
+        eyes.buf = pins.createBuffer(numleds * stride);
+        eyes.start = 0;
+        eyes._length = numleds;
+        eyes._mode = mode || ValonEyesMode.RGB;
+        eyes._matrixWidth = 0;
+        eyes.setBrightness(128)
+        eyes.setPin(pin)
+        return eyes;
     }
 
     /**
