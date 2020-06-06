@@ -174,7 +174,7 @@ namespace valon {
         pins.digitalWritePin(DigitalPin.P5, 0);
 
         // read pulse
-        d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 58);  // 8 / 340 = 
+        d = pins.pulseIn(DigitalPin.P11, PulseValue.High, maxCmDistance * 58);  // 8 / 340 = 
         switch (unit) {
             case YFVPingUnit.Centimeters: return Math.idiv(d, 58);
             default: return d;
