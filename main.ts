@@ -530,7 +530,7 @@ namespace valon {
      * @param numleds number of leds in the eyes, eg: 2
      */
     //% blockId="neopixel_create" block="NeoPixel init %numleds|leds as %mode"
-    //% weight=60  //% trackArgs=0,2
+    //% weight=60  
     //% blockSetVariable=eyes
     export function create(numleds: number, mode: ValonEyesMode): Strip {
         let eyes = new Strip();
