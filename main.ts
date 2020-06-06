@@ -401,7 +401,7 @@ namespace valon {
          * @param eyes_n position of the NeoPixel in the strip
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_pixel_color" block="%eyes|show color at %eyes_n|to %rgb=neopixel_colors"
+        //% blockId="neopixel_set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb=neopixel_colors"
         //% strip.defl=eyes
         //% weight=58
         setEyesColor(eyes_n: ValonRGBEYES, rgb: number): void {
@@ -444,16 +444,6 @@ namespace valon {
             const stride = this._mode === ValonEyesMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
         }
-
-        // /**
-        //  * Gets the number of pixels declared on the strip
-        //  */
-        // //% blockId="neopixel_length" block="%strip|length" //% strip.defl=strip
-        // //% weight=41 
-        // //% advanced=true
-        // length() {
-        //     return this._length;
-        // }
 
         /**
          * Set the brightness of the strip. This flag only applies to future operation.
