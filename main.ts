@@ -388,7 +388,7 @@ namespace valon {
          */
         //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
         //% strip.defl=strip
-        //% weight=50
+        //% weight=56
         showColor(rgb: number) {
             rgb = rgb >> 0;
             this.setAllRGB(rgb);
@@ -400,9 +400,9 @@ namespace valon {
          * @param eyes_n position of the NeoPixel in the strip
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_pixel_color" block="%eyes|set color at %eyes_n|to %rgb=neopixel_colors"
+        //% blockId="neopixel_set_pixel_color" block="%eyes|show color at %eyes_n|to %rgb=neopixel_colors"
         //% strip.defl=eyes
-        //% weight=47
+        //% weight=58
         setEyesColor(eyes_n: ValonRGBEYES, rgb: number): void {
             this.setPixelRGB(eyes_n , rgb >> 0);
             this.show();
@@ -415,9 +415,8 @@ namespace valon {
          */
         //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
         //% strip.defl=strip
-        //% blockGap=8
-        //% weight=80
-        //% parts="neopixel" advanced=true
+        //% weight=58
+        //% advanced=true
         setPixelColor(pixeloffset: number, rgb: number): void {
             this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
         }
@@ -531,7 +530,7 @@ namespace valon {
      * @param numleds number of leds in the eyes, eg: 2
      */
     //% blockId="neopixel_create" block="NeoPixel init %numleds|leds as %mode"
-    //% weight=55
+    //% weight=60
     //% trackArgs=0,2
     //% blockSetVariable=eyes
     export function create(numleds: number, mode: ValonEyesMode): Strip {
