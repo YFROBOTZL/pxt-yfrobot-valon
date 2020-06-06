@@ -488,14 +488,15 @@ namespace valon {
             this.buf.fill(0, this.start * stride, this._length * stride);
         }
 
-        /**
-         * Gets the number of pixels declared on the strip
-         */
-        //% blockId="neopixel_length" block="%strip|length" //% strip.defl=strip
-        //% weight=41 //% advanced=true
-        length() {
-            return this._length;
-        }
+        // /**
+        //  * Gets the number of pixels declared on the strip
+        //  */
+        // //% blockId="neopixel_length" block="%strip|length" //% strip.defl=strip
+        // //% weight=41 
+        // //% advanced=true
+        // length() {
+        //     return this._length;
+        // }
 
         /**
          * Set the brightness of the strip. This flag only applies to future operation.
@@ -596,29 +597,6 @@ namespace valon {
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
     //% advanced=true
     export function rgb(red: number, green: number, blue: number): number {
-        return valon_packRGB(red, green, blue);
-    }
-
-    // /**
-    //  * Set the brightness of the eyes.(0~255)
-    //  * @param brightness a measure of LED brightness in 0-255. eg:255
-    //  */
-    // //% blockId="valon_set_brightness" block="set brightness %brightness" blockGap=8
-    // //% weight=4
-    // export function setBrightness(brightness: number): void {
-    //     brightness = brightness & 0xff;
-    // }
-
-    /**
-     * Converts red, green, blue channels into a RGB color
-     * @param red value of the red channel between 0 and 255. eg: 255
-     * @param green value of the green channel between 0 and 255. eg: 255
-     * @param blue value of the blue channel between 0 and 255. eg: 255
-     */
-    //% weight=27
-    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
-    //% advanced=true
-    export function valon_convertTorgb(red: number, green: number, blue: number): number {
         return valon_packRGB(red, green, blue);
     }
 
