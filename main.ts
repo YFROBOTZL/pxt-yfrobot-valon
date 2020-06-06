@@ -192,25 +192,6 @@ namespace valon {
         //     default: return d;
         // }
 
-        // pins.digitalWritePin(DigitalPin.P1, 0);
-        // if (pins.digitalReadPin(DigitalPin.P2) == 0) {
-        //     pins.digitalWritePin(DigitalPin.P1, 1);
-        //     pins.digitalWritePin(DigitalPin.P1, 0);
-        //     d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 58);
-        // } else {
-        //     pins.digitalWritePin(DigitalPin.P1, 0);
-        //     pins.digitalWritePin(DigitalPin.P1, 1);
-        //     d = pins.pulseIn(DigitalPin.P2, PulseValue.Low, maxCmDistance * 58);
-        // }
-        // let x = d / 39;
-        // if (x <= 0 || x > 500) {
-        //     return 0;
-        // }
-        // switch (unit) {
-        //     case YFVPingUnit.Centimeters: return Math.round(x);
-        //     default: return Math.idiv(d, 2.54);
-        // }
-
     }
 
     /**
