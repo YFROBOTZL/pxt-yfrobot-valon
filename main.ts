@@ -362,7 +362,7 @@ namespace valon {
      * Show RGB eyes mounted on valon
      * @param rgb RGB colour of the pixel
      */
-    //% blockId="valon_showColor" block="Eyes |%eyes show color|%rgb"
+    //% blockId="valon_showColor" block="Eyes |%eyes show color|%rgb=FireColours"
     //% weight=5
     //% eyes.fieldEditor="gridpicker" eyes.fieldOptions.columns=2
     //% color.fieldEditor="gridpicker" color.fieldOptions.columns=4
