@@ -400,7 +400,7 @@ namespace valon {
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
         //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" 
-        //% strip.defl=strip
+        //% strip.defl=eyes
         //% weight=58
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
@@ -411,7 +411,7 @@ namespace valon {
          * You need to call ``show`` to make the changes visible.
          */
         //% blockId="neopixel_clear" block="%strip|clear"
-        //% strip.defl=strip
+        //% strip.defl=eyes
         //% weight=55
         clear(): void {
             const stride = this._mode === ValonEyesMode.RGBW ? 4 : 3;
@@ -421,7 +421,8 @@ namespace valon {
         /**
          * Send all the changes to the strip.
          */
-        //% blockId="neopixel_show" block="%strip|show" //% strip.defl=strip
+        //% blockId="neopixel_show" block="%strip|show" 
+        //% strip.defl=eyes
         //% weight=53
         show() {
             // only supported in beta
