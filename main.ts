@@ -148,7 +148,7 @@ namespace valon {
     //% ledn.fieldEditor="gridpicker" ledn.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: YFVLED, ledswitch: YFVLEDswitch): void {
-        led.enable(false); 
+        led.enable(false);
         if (ledn == YFVLED.LEDLeft) {
             pins.digitalWritePin(DigitalPin.P10, ledswitch)
         } else if (ledn == YFVLED.LEDRight) {
@@ -165,24 +165,39 @@ namespace valon {
     //% weight=95
     export function Ultrasonic(unit: YFVPingUnit, maxCmDistance = 500): number {
         let d
-        pins.digitalWritePin(DigitalPin.P1, 0);
-        if (pins.digitalReadPin(DigitalPin.P2) == 0) {
-            pins.digitalWritePin(DigitalPin.P1, 1);
-            pins.digitalWritePin(DigitalPin.P1, 0);
-            d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 58);
-        } else {
-            pins.digitalWritePin(DigitalPin.P1, 0);
-            pins.digitalWritePin(DigitalPin.P1, 1);
-            d = pins.pulseIn(DigitalPin.P2, PulseValue.Low, maxCmDistance * 58);
-        }
-        let x = d / 39;
-        if (x <= 0 || x > 500) {
-            return 0;
-        }
+        // send pulse
+        pins.setPull(DigitalPin.P5, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P5, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(DigitalPin.P5, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(DigitalPin.P5, 0);
+
+        // read pulse
+        d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 58);  // 8 / 340 = 
         switch (unit) {
-            case YFVPingUnit.Centimeters: return Math.round(x);
-            default: return Math.idiv(d, 2.54);
+            case YFVPingUnit.Centimeters: return Math.idiv(d, 58);
+            default: return d;
         }
+
+        // pins.digitalWritePin(DigitalPin.P1, 0);
+        // if (pins.digitalReadPin(DigitalPin.P2) == 0) {
+        //     pins.digitalWritePin(DigitalPin.P1, 1);
+        //     pins.digitalWritePin(DigitalPin.P1, 0);
+        //     d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 58);
+        // } else {
+        //     pins.digitalWritePin(DigitalPin.P1, 0);
+        //     pins.digitalWritePin(DigitalPin.P1, 1);
+        //     d = pins.pulseIn(DigitalPin.P2, PulseValue.Low, maxCmDistance * 58);
+        // }
+        // let x = d / 39;
+        // if (x <= 0 || x > 500) {
+        //     return 0;
+        // }
+        // switch (unit) {
+        //     case YFVPingUnit.Centimeters: return Math.round(x);
+        //     default: return Math.idiv(d, 2.54);
+        // }
 
     }
 
