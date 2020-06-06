@@ -129,7 +129,7 @@ namespace valon {
         //% blockId="valon_EyesRight" block="right"
         EyesRight = 0,
         //% blockId="valon_EyesALL" block="all"
-        MAll = 2
+        EyesMAll = 2
     }
 
     // Patrol
@@ -391,7 +391,12 @@ namespace valon {
         //% strip.defl=eyes
         //% weight=60
         setEyesColor(eyes_n: ValonRGBEYES, rgb: number): void {
-            this.setPixelRGB(eyes_n , rgb >> 0);
+            if(eyes_n == ValonRGBEYES.EyesMAll){
+                this.setPixelRGB(ValonRGBEYES.EyesLeft , rgb >> 0);
+                this.setPixelRGB(ValonRGBEYES.EyesRight , rgb >> 0);
+            } else {
+                this.setPixelRGB(eyes_n , rgb >> 0);
+            }
             this.show();
         }
 
