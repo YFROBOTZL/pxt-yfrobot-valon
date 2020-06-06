@@ -399,7 +399,7 @@ namespace valon {
          * Set the brightness of the strip. This flag only applies to future operation.
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" 
+        //% blockId="neopixel_set_brightness" block="%eyes|set brightness %brightness" 
         //% strip.defl=eyes
         //% weight=58
         setBrightness(brightness: number): void {
@@ -410,7 +410,7 @@ namespace valon {
          * Turn off all LEDs.
          * You need to call ``show`` to make the changes visible.
          */
-        //% blockId="neopixel_clear" block="%strip|clear"
+        //% blockId="neopixel_clear" block="%eyes|clear"
         //% strip.defl=eyes
         //% weight=55
         clear(): void {
@@ -421,7 +421,7 @@ namespace valon {
         /**
          * Send all the changes to the strip.
          */
-        //% blockId="neopixel_show" block="%strip|show" 
+        //% blockId="neopixel_show" block="%eyes|show" 
         //% strip.defl=eyes
         //% weight=53
         show() {
