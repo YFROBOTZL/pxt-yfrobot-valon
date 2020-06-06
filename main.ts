@@ -423,16 +423,16 @@ namespace valon {
         return b;
     }
 
-    /**
-     * Init RGB eyes mounted on valon
-     */
-    //% blockId="valon_rgb" block="RGB"
-    //% weight=5
-    export function rgb(): neopixel.Strip {
-        if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P11, 2, NeoPixelMode.RGB)
-        }
-        return neoStrip;
-    }
+    // /**
+    //  * Init RGB eyes mounted on valon
+    //  */
+    // //% blockId="valon_rgb" block="RGB"
+    // //% weight=5
+    // export function rgb(): neopixel.Strip {
+    //     if (!neoStrip) {
+    //         neoStrip = neopixel.create(DigitalPin.P11, 2, NeoPixelMode.RGB)
+    //     }
+    //     return neoStrip;
+    // }
 
 }
