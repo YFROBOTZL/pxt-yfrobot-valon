@@ -42,12 +42,12 @@ enum ValonColors {
  * Different modes for RGB or RGB+W NeoPixel strips
  */
 enum ValonEyesMode {
-    //% block="RGB (GRB format)"
+    //% block="GRB"
     RGB = 1,
+    //% block="RGB"
+    RGB_RGB = 3,
     //% block="RGB+W"
-    RGBW = 2,
-    //% block="RGB (RGB format)"
-    RGB_RGB = 3
+    RGBW = 2
 }
 
 enum state {
@@ -391,11 +391,11 @@ namespace valon {
         //% strip.defl=eyes
         //% weight=60
         setEyesColor(eyes_n: ValonRGBEYES, rgb: number): void {
-            if(eyes_n == ValonRGBEYES.EyesMAll){
-                this.setPixelRGB(ValonRGBEYES.EyesLeft , rgb >> 0);
-                this.setPixelRGB(ValonRGBEYES.EyesRight , rgb >> 0);
+            if (eyes_n == ValonRGBEYES.EyesMAll) {
+                this.setPixelRGB(ValonRGBEYES.EyesLeft, rgb >> 0);
+                this.setPixelRGB(ValonRGBEYES.EyesRight, rgb >> 0);
             } else {
-                this.setPixelRGB(eyes_n , rgb >> 0);
+                this.setPixelRGB(eyes_n, rgb >> 0);
             }
             this.show();
         }
