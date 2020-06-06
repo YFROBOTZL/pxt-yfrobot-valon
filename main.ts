@@ -502,7 +502,8 @@ namespace valon {
          * Set the brightness of the strip. This flag only applies to future operation.
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" //% strip.defl=strip
+        //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" 
+        //% strip.defl=strip
         //% weight=40
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
@@ -568,23 +569,23 @@ namespace valon {
     }
     /**
      * Create a new NeoPixel driver for eye's LEDs.
-     * @param numleds number of leds in the strip, eg: 2
+     * @param numleds number of leds in the eyes, eg: 2
      */
     //% blockId="neopixel_create" block="NeoPixel init %numleds|leds as %mode"
     //% weight=29
     //% trackArgs=0,2
-    //% blockSetVariable=strip
+    //% blockSetVariable=eyes
     export function create(numleds: number, mode: number): Strip {
-        let strip = new Strip();
+        let eyes = new Strip();
         let stride = mode === ValonEyesMode.RGBW ? 4 : 3;
-        strip.buf = pins.createBuffer(numleds * stride);
-        strip.start = 0;
-        strip._length = numleds;
-        strip._mode = mode || ValonEyesMode.RGB;
-        strip._matrixWidth = 0;
-        strip.setBrightness(128)
-        strip.setPin(valonEyesPin)
-        return strip;
+        eyes.buf = pins.createBuffer(numleds * stride);
+        eyes.start = 0;
+        eyes._length = numleds;
+        eyes._mode = mode || ValonEyesMode.RGB;
+        eyes._matrixWidth = 0;
+        eyes.setBrightness(128)
+        eyes.setPin(valonEyesPin)
+        return eyes;
     }
 
     /**
