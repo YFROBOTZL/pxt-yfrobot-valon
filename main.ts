@@ -12,6 +12,32 @@ enum YFVPingUnit {
     Centimeters,
 }
 
+/**
+  * Pre-Defined LED colours
+  */
+enum YFVColors {
+    //% block=red
+    Red = 0xff0000,
+    //% block=orange
+    Orange = 0xffa500,
+    //% block=yellow
+    Yellow = 0xffff00,
+    //% block=green
+    Green = 0x00ff00,
+    //% block=blue
+    Blue = 0x0000ff,
+    //% block=indigo
+    Indigo = 0x4b0082,
+    //% block=violet
+    Violet = 0x8a2be2,
+    //% block=purple
+    Purple = 0xff00ff,
+    //% block=white
+    White = 0xffffff,
+    //% block=black
+    Black = 0x000000
+}
+
 enum state {
     state1 = 0x10,
     state2 = 0x11,
@@ -41,10 +67,13 @@ namespace valon {
     let valonPatrolMiddle = DigitalPin.P2;
     let valonPatrolRight = DigitalPin.P8;
 
+    //
+    let valonEyesPin = DigitalPin.P11;
+    let valonEyesNum = 2;
+    let valonEyesMode = 1; // RGB (GRB format)
+
     let initialized = false
-    let initializedMatrix = false
     let neoStrip: neopixel.Strip;
-    let matBuf = pins.createBuffer(17);
     let distanceBuf = 0;
 
 
@@ -80,6 +109,15 @@ namespace valon {
         turnOn = 0x01,
         //% blockId="LEDturnOff" block="OFF"
         turnOff = 0x00
+    }
+
+    export enum YFVRGBEYES {
+        //% blockId="valon_EyesLeft" block="left"
+        EyesLeft = 1,
+        //% blockId="valon_EyesRight" block="right"
+        EyesRight = 0,
+        //% blockId="valon_EyesALL" block="all"
+        MAll = 2
     }
 
     // Patrol
@@ -158,17 +196,7 @@ namespace valon {
         return Math.max(Math.min(max, value), min);
     }
 
-    /**
-     * Init RGB pixels mounted on valon
-     */
-    //% blockId="valon_rgb" block="RGB"
-    //% weight=5
-    export function rgb(): neopixel.Strip {
-        if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P11, 2, NeoPixelMode.RGB)
-        }
-        return neoStrip;
-    }
+
 
     /**
      * Turn on/off the LEDs.
@@ -330,6 +358,79 @@ namespace valon {
     //     basic.pause(50);
     // })
 
+    /**
+     * Show RGB eyes mounted on valon
+     */
+    //% blockId="valon_showColor" block="Eyes |%eyes show color|%color"
+    //% weight=5
+    //% eyes.fieldEditor="gridpicker" eyes.fieldOptions.columns=2
+    //% color.fieldEditor="gridpicker" color.fieldOptions.columns=4
+    export function valon_showColor(eyes: YFVRGBEYES, color: YFVColors): neopixel.Strip {
+        if (!neoStrip) {
+            neoStrip = neopixel.create(valonEyesPin, valonEyesNum, valonEyesMode)
+        }
+        return neoStrip;
+    }
 
+    /**
+     * Set the brightness of the eyes.(0~255)
+     * @param brightness a measure of LED brightness in 0-255. eg:255
+     */
+    //% blockId="valon_set_brightness" block="set brightness %brightness" blockGap=8
+    //% weight=4
+    export function setBrightness(brightness: number): void {
+        brightness = brightness & 0xff;
+    }
+
+    /**
+     * Converts red, green, blue channels into a RGB color
+     * @param red value of the red channel between 0 and 255. eg: 255
+     * @param green value of the green channel between 0 and 255. eg: 255
+     * @param blue value of the blue channel between 0 and 255. eg: 255
+     */
+    //% weight=1
+    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
+    //% advanced=true
+    export function valon_convertTorgb(red: number, green: number, blue: number): number {
+        return valon_packRGB(red, green, blue);
+    }
+
+    /**
+     * Gets the RGB value of a known color
+     */
+    //% weight=2 blockGap=8
+    //% blockId="neopixel_colors" block="%color"
+    //% advanced=true
+    export function colors(color: YFVColors): number {
+        return color;
+    }
+
+    function valon_packRGB(a: number, b: number, c: number): number {
+        return ((a & 0xFF) << 16) | ((b & 0xFF) << 8) | (c & 0xFF);
+    }
+    function valon_unpackR(rgb: number): number {
+        let r = (rgb >> 16) & 0xFF;
+        return r;
+    }
+    function valon_unpackG(rgb: number): number {
+        let g = (rgb >> 8) & 0xFF;
+        return g;
+    }
+    function valon_unpackB(rgb: number): number {
+        let b = (rgb) & 0xFF;
+        return b;
+    }
+
+    /**
+     * Init RGB eyes mounted on valon
+     */
+    //% blockId="valon_rgb" block="RGB"
+    //% weight=5
+    export function rgb(): neopixel.Strip {
+        if (!neoStrip) {
+            neoStrip = neopixel.create(DigitalPin.P11, 2, NeoPixelMode.RGB)
+        }
+        return neoStrip;
+    }
 
 }
