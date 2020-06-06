@@ -63,7 +63,7 @@ interface KV {
     action: Action;
 }
 
-//% color="#31C7D5" weight=10 icon="\uf1d4"
+//% color="#7BD239" weight=10 icon="\uf1b0"
 namespace valon {
 
     // motor pin 
