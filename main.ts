@@ -383,54 +383,27 @@ namespace valon {
         _matrixWidth: number; // number of leds in a matrix - if any
 
         /**
-         * Shows all LEDs to a given color (range 0-255 for r, g, b).
-         * @param rgb RGB color of the LED
-         */
-        //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
-        //% strip.defl=strip
-        //% weight=56
-        //% advanced=true
-        showColor(rgb: number) {
-            rgb = rgb >> 0;
-            this.setAllRGB(rgb);
-            this.show();
-        }
-
-        /**
          * Set LED to a given color (range 0-255 for r, g, b).
          * @param eyes_n position of the NeoPixel in the strip
          * @param rgb RGB color of the LED
          */
         //% blockId="neopixel_set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb=neopixel_colors"
         //% strip.defl=eyes
-        //% weight=58
+        //% weight=60
         setEyesColor(eyes_n: ValonRGBEYES, rgb: number): void {
             this.setPixelRGB(eyes_n , rgb >> 0);
             this.show();
         }
-        /**
-         * Set LED to a given color (range 0-255 for r, g, b).
-         * You need to call ``show`` to make the changes visible.
-         * @param pixeloffset position of the NeoPixel in the strip
-         * @param rgb RGB color of the LED
-         */
-        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
-        //% strip.defl=strip
-        //% weight=57
-        //% advanced=true
-        setPixelColor(pixeloffset: number, rgb: number): void {
-            this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
-        }
 
         /**
-         * Send all the changes to the strip.
+         * Set the brightness of the strip. This flag only applies to future operation.
+         * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="neopixel_show" block="%strip|show" //% strip.defl=strip
-        //% weight=53
-        show() {
-            // only supported in beta
-            // ws2812b.setBufferMode(this.pin, this._mode);
-            ws2812b.sendBuffer(this.buf, this.pin);
+        //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" 
+        //% strip.defl=strip
+        //% weight=58
+        setBrightness(brightness: number): void {
+            this.brightness = brightness & 0xff;
         }
 
         /**
@@ -446,14 +419,42 @@ namespace valon {
         }
 
         /**
-         * Set the brightness of the strip. This flag only applies to future operation.
-         * @param brightness a measure of LED brightness in 0-255. eg: 255
+         * Send all the changes to the strip.
          */
-        //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" 
+        //% blockId="neopixel_show" block="%strip|show" //% strip.defl=strip
+        //% weight=53
+        show() {
+            // only supported in beta
+            // ws2812b.setBufferMode(this.pin, this._mode);
+            ws2812b.sendBuffer(this.buf, this.pin);
+        }
+
+        /**
+         * Shows all LEDs to a given color (range 0-255 for r, g, b).
+         * @param rgb RGB color of the LED
+         */
+        //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
         //% strip.defl=strip
-        //% weight=45
-        setBrightness(brightness: number): void {
-            this.brightness = brightness & 0xff;
+        //% weight=40
+        //% advanced=true
+        showColor(rgb: number) {
+            rgb = rgb >> 0;
+            this.setAllRGB(rgb);
+            this.show();
+        }
+
+        /**
+         * Set LED to a given color (range 0-255 for r, g, b).
+         * You need to call ``show`` to make the changes visible.
+         * @param pixeloffset position of the NeoPixel in the strip
+         * @param rgb RGB color of the LED
+         */
+        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
+        //% strip.defl=strip
+        //% weight=38
+        //% advanced=true
+        setPixelColor(pixeloffset: number, rgb: number): void {
+            this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
         }
 
         /**
@@ -519,7 +520,7 @@ namespace valon {
      * @param numleds number of leds in the eyes, eg: 2
      */
     //% blockId="neopixel_create" block="NeoPixel init %numleds|leds as %mode"
-    //% weight=60  
+    //% weight=62  
     //% blockSetVariable=eyes
     export function create(numleds: number, mode: ValonEyesMode): Strip {
         let eyes = new Strip();
@@ -535,26 +536,26 @@ namespace valon {
     }
 
     /**
+     * Gets the RGB value of a known color
+     */
+    //% weight=30  
+    //% blockId="neopixel_colors" block="%color"
+    //% advanced=true
+    export function colors(color: ValonColors): number {
+        return color;
+    }
+
+    /**
      * Converts red, green, blue channels into a RGB color
      * @param red value of the red channel between 0 and 255. eg: 255
      * @param green value of the green channel between 0 and 255. eg: 255
      * @param blue value of the blue channel between 0 and 255. eg: 255
      */
-    //% weight=28
+    //% weight=26
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
     //% advanced=true
     export function rgb(red: number, green: number, blue: number): number {
         return valon_packRGB(red, green, blue);
-    }
-
-    /**
-     * Gets the RGB value of a known color
-     */
-    //% weight=25  
-    //% blockId="neopixel_colors" block="%color"
-    //% advanced=true
-    export function colors(color: ValonColors): number {
-        return color;
     }
 
     function valon_packRGB(a: number, b: number, c: number): number {
@@ -581,7 +582,7 @@ namespace valon {
      */
     //% blockId=neopixelHSL block="hue %h|saturation %s|luminosity %l"
     //% advanced=true
-    //% weight=10
+    //% weight=20
     export function hsl(h: number, s: number, l: number): number {
         h = Math.round(h);
         s = Math.round(s);
