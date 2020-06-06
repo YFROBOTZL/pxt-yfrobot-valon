@@ -399,15 +399,15 @@ namespace valon {
         /**
          * Set LED to a given color (range 0-255 for r, g, b).
          * You need to call ``show`` to make the changes visible.
-         * @param pixeloffset position of the NeoPixel in the strip
+         * @param eyes_n position of the NeoPixel in the strip
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
+        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %eyes_n|to %rgb=neopixel_colors"
         //% strip.defl=strip
         //% weight=47
         //% advanced=true
-        setPixelColor(pixeloffset: number, rgb: number): void {
-            this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
+        setPixelColor(eyes_n: ValonRGBEYES, rgb: number): void {
+            this.setPixelRGB(eyes_n , rgb >> 0);
         }
 
         // /**
