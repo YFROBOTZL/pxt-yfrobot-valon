@@ -360,15 +360,17 @@ namespace valon {
 
     /**
      * Show RGB eyes mounted on valon
+     * @param rgb RGB colour of the pixel
      */
-    //% blockId="valon_showColor" block="Eyes |%eyes show color|%color"
+    //% blockId="valon_showColor" block="Eyes |%eyes show color|%rgb"
     //% weight=5
     //% eyes.fieldEditor="gridpicker" eyes.fieldOptions.columns=2
     //% color.fieldEditor="gridpicker" color.fieldOptions.columns=4
-    export function valon_showColor(eyes: YFVRGBEYES, color: YFVColors): neopixel.Strip {
+    export function valon_showColor(eyes: YFVRGBEYES, rgb: number): neopixel.Strip {
         if (!neoStrip) {
             neoStrip = neopixel.create(valonEyesPin, valonEyesNum, valonEyesMode)
         }
+        neoStrip.setPixel(eyes,rgb);
         return neoStrip;
     }
 
