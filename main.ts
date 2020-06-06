@@ -389,6 +389,7 @@ namespace valon {
         //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
         //% strip.defl=strip
         //% weight=56
+        //% advanced=true
         showColor(rgb: number) {
             rgb = rgb >> 0;
             this.setAllRGB(rgb);
@@ -425,8 +426,7 @@ namespace valon {
          * Send all the changes to the strip.
          */
         //% blockId="neopixel_show" block="%strip|show" //% strip.defl=strip
-        //% weight=43
-
+        //% weight=53
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
@@ -439,8 +439,7 @@ namespace valon {
          */
         //% blockId="neopixel_clear" block="%strip|clear"
         //% strip.defl=strip
-        //% weight=42
-
+        //% weight=55
         clear(): void {
             const stride = this._mode === ValonEyesMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
@@ -561,7 +560,7 @@ namespace valon {
     /**
      * Gets the RGB value of a known color
      */
-    //% weight=25 blockGap=8
+    //% weight=25  
     //% blockId="neopixel_colors" block="%color"
     //% advanced=true
     export function colors(color: ValonColors): number {
@@ -591,6 +590,8 @@ namespace valon {
      * @param l luminosity from 0 to 99
      */
     //% blockId=neopixelHSL block="hue %h|saturation %s|luminosity %l"
+    //% advanced=true
+    //% weight=10
     export function hsl(h: number, s: number, l: number): number {
         h = Math.round(h);
         s = Math.round(s);
