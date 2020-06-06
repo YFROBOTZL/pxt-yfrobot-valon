@@ -169,19 +169,28 @@ namespace valon {
     export function Ultrasonic(unit: YFVPingUnit, maxCmDistance = 500): number {
         let d
         // send pulse
-        pins.setPull(DigitalPin.P5, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P5, 0);
+        pins.setPull(valonUltrasonicTrig, PinPullMode.PullNone);
+        pins.digitalWritePin(valonUltrasonicTrig, 0);
         control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P5, 1);
+        pins.digitalWritePin(valonUltrasonicTrig, 1);
         control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P5, 0);
+        pins.digitalWritePin(valonUltrasonicTrig, 0);
 
         // read pulse
-        d = pins.pulseIn(DigitalPin.P11, PulseValue.High, maxCmDistance * 58);  // 8 / 340 = 
-        switch (unit) {
-            case YFVPingUnit.Centimeters: return Math.idiv(d, 58);
-            default: return d;
+        // d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, maxCmDistance * 58);  // 8 / 340 = 
+        d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, 25000);
+        let ret = d;
+        // filter timeout spikes
+        if (ret == 0 && distanceBuf != 0) {
+            ret = distanceBuf;
         }
+        distanceBuf = d;   
+
+        return Math.floor(ret * 9 / 6 / 58);
+        // switch (unit) {
+        //     case YFVPingUnit.Centimeters: return Math.idiv(d, 58);
+        //     default: return d;
+        // }
 
         // pins.digitalWritePin(DigitalPin.P1, 0);
         // if (pins.digitalReadPin(DigitalPin.P2) == 0) {
