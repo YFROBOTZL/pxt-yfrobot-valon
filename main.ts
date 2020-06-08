@@ -7,12 +7,6 @@
  * @author [email](yfrobot@qq.com)
  */
 
-let maqueencb: Action
-let maqueenmycb: Action
-let maqueene        = "1"
-let maqueenparam    = 0
-let alreadyInit=0
-let IrPressEvent=0
 
 enum ValonPingUnit {
     //% block="cm"
