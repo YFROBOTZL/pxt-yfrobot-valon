@@ -42,6 +42,9 @@
     "valon.rgb|block": "紅%red|綠%green|藍%blue",
     "valon.hsl|block": "色相 %h|飽和度 %s|亮度 %l",
 
-    "valon.IR_callbackUser|block": "當接收到紅外時運行",
-    "valon.IR_read|block": "紅外值"
+    "valon.connectIrReceiver|block": "當接收到紅外時運行",
+    "valon.onIrButton|block": "當接收到紅外時運行",
+    "valon.irButton|block": "红外按键值",
+    "valon.wasAnyIrButtonPressed|block": "任意按键被按下",
+    "valon.irButtonCode|block": "紅外按键%button|值："
 }
