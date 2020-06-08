@@ -788,8 +788,8 @@ namespace valon {
 
     /**
      * Connects to the IR receiver module at the specified pin and configures the IR protocol.
-     * @param pin IR receiver pin, eg: DigtialPin.P3
-     * @param protocol IR protocol, eg: IrProtocol.NEC
+     * @param pin IR receiver pin. eg: DigtialPin.P3
+     * @param protocol IR protocol. eg: IrProtocol.NEC
      */
     //% subcategory="IR Receiver"
     //% blockId="makerbit_infrared_connect_receiver"
