@@ -35,9 +35,9 @@
     "valon.Strip.setEyesColor|block": "%eyes|显示 %eyes_n|颜色：%rgb",
     "valon.Strip.setBrightness|block": "%eyes|设置亮度为 %brightness",
     "valon.Strip.clear|block": "%eyes|清除显示",
-    "valon.Strip.show|block": "%eyes|刷新显示",
     "valon.Strip.showColor|block": "%strip|显示颜色%rgb",
     "valon.Strip.setPixelColor|block": "%strip|设置颜色 像素%pixeloffset|为 %rgb",
+    "valon.Strip.show|block": "%eyes|刷新显示",
     "valon.color|block": "%color",
     "valon.rgb|block": "红%red|绿%green|蓝%blue",
     "valon.hsl|block": "色相 %h|饱和度 %s|亮度 %l"

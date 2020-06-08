@@ -428,7 +428,8 @@ namespace valon {
          */
         //% blockId="valon_eyes_show" block="%eyes|show" 
         //% strip.defl=eyes
-        //% weight=53
+        //% weight=35
+        //% advanced=true
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
