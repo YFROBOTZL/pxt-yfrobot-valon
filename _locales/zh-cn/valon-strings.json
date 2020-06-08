@@ -13,9 +13,10 @@
     "valon.ValonLED.LEDRight|block": "右侧",
 
     "valon.writeLED|block": "LED灯|%ledn|%ledswitch",
-    "valon.motorRun|block": "馬達|%motor|方向|%dir|速度|%speed",
+    "valon.motorRun|block": "电机|%motor|方向|%dir|速度|%speed",
     "valon.motorStop|block": "电机 停止|%motors",
     "valon.Ultrasonic|block": "超声波距离|%unit",
     "valon.readPatrol|block": "巡线传感器|%patrol",
-    "valon.create|block": "初始化RGBEyes%numleds|颗LED（模式%mode|）"
+    "valon.create|block": "初始化RGBEyes%numleds|颗LED（模式%mode|）",
+    "valon.setEyesColor|block": "%eyes|%eyes_n|显示颜色：%rgb=neopixel_colors",
 }
