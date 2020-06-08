@@ -21,5 +21,5 @@
     "valon.Ultrasonic|block": "超音波距離|%unit",
     "valon.readPatrol|block": "循跡感測器|%patrol",
     "valon.create|block": "初始化RGBEyes%numleds|顆LED（模式%mode|）",
-    "valon.setEyesColor|block": "|%eyes|%eyes_n|顯示顏色：%rgb"
+    "valon.setEyesColor|block": "%eyes|显示 %eyes_n|颜色：%rgb"
 }
