@@ -670,14 +670,14 @@ namespace valon {
         alreadyInit=1
     }
     /**
-     * Converts a hue saturation luminosity value into a RGB color
+     * Received the message of IR 
      */
     //% weight=10
     //% blockGap=50
     //% mutate=objectdestructuring
     //% mutateText=Packeta
     //% mutateDefaults="myparam:message"
-    //% blockId=IR_callbackUser block="on obloq received"
+    //% blockId=IR_callbackUser block="received IR"
     export function IR_callbackUser(maqueencb: (packet: Packeta) => void) {
         maqueenInit()
         IR_callback(() => {
