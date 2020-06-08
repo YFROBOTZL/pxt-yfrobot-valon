@@ -129,7 +129,7 @@ namespace valon {
         //% blockId="valon_EyesRight" block="right"
         EyesRight = 0,
         //% blockId="valon_EyesALL" block="all"
-        EyesMAll = 2
+        EyesAll = 2
     }
 
     // Patrol
@@ -387,11 +387,11 @@ namespace valon {
          * @param eyes_n position of the NeoPixel in the strip
          * @param rgb RGB color of the LED
          */
-        //% blockId="valon_eyes_set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb=neopixel_colors"
+        //% blockId="valon_eyes_set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb"
         //% strip.defl=eyes
         //% weight=60
-        setEyesColor(eyes_n: ValonRGBEYES, rgb: number): void {
-            if (eyes_n == ValonRGBEYES.EyesMAll) {
+        setEyesColor(eyes_n: ValonRGBEYES, rgb: ValonColors): void {
+            if (eyes_n == ValonRGBEYES.EyesAll) {
                 this.setPixelRGB(ValonRGBEYES.EyesLeft, rgb >> 0);
                 this.setPixelRGB(ValonRGBEYES.EyesRight, rgb >> 0);
             } else {
