@@ -1,4 +1,4 @@
-# pxt-yfrobot-demo
+# pxt-yfrobot-valon
 
 [![Build Status](https://travis-ci.org/1010Technologies/pxt-makerbit-ir-receiver.svg?branch=master)](https://travis-ci.org/1010Technologies/pxt-makerbit-ir-receiver)
 
