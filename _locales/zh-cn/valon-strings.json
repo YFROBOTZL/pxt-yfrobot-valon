@@ -11,9 +11,10 @@
     "valon.ValonLEDswitch.turnOff|block": "闭",
     "valon.ValonLED.LEDLeft|block": "左侧",
     "valon.ValonLED.LEDRight|block": "右侧",
+
 	"valon.writeLED|block": "LED灯|%ledn|%ledswitch",
+	"valon.motorRun|block": "馬達|%motor|方向|%dir|速度|%speed",    
     "valon.motorStop|block": "电机 停止|%motors",
-    "valon.motorRun|block": "电机|%motor|方向|%dir|速度|%speed",
     "valon.Ultrasonic|block": "超声波距离|%unit",
     "valon.readPatrol|block": "巡线传感器|%patrol"
 }
