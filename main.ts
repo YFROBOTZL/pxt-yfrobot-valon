@@ -7,6 +7,13 @@
  * @author [email](yfrobot@qq.com)
  */
 
+let maqueencb: Action
+let maqueenmycb: Action
+let maqueene        = "1"
+let maqueenparam    = 0
+let alreadyInit=0
+let IrPressEvent=0
+
 enum ValonPingUnit {
     //% block="cm"
     Centimeters,
@@ -81,8 +88,6 @@ namespace valon {
 
     //
     let valonEyesPin = DigitalPin.P11;
-    let valonEyesNum = 2;
-    let valonEyesMode = 1; // RGB (GRB format)
 
     let initialized = false
     let neoStrip: valon.Strip;
@@ -155,6 +160,18 @@ namespace valon {
         High = 0x01,
         //% block="low"
         Low = 0x00
+    }
+
+    export enum ValonExPin {
+        //% blockId="ExPin1" block="expin1"
+        ExPin1 = 3,
+        //% blockId="ExPin2" block="expin2"
+        ExPin2 = 4
+    }
+
+    export class Packeta {
+        public mye: string;
+        public myparam: number;
     }
 
     export enum ValonTurns {
@@ -630,6 +647,60 @@ namespace valon {
         Clockwise,
         CounterClockwise,
         Shortest
+    }
+
+    //% shim=valonIR::initIR
+    function initIR(pin: Pins):void{
+        return
+    }
+    //% shim=valonIR::onPressEvent
+    function onPressEvent(btn: RemoteButton,body: Action):void{
+        return
+    }
+    //% shim=valonIR::getParam
+    function getParam():number {
+        return 0
+    }
+    
+    function maqueenInit():void{
+        if(alreadyInit==1){
+            return
+        }
+        initIR(Pins.P16)
+        alreadyInit=1
+    }
+    /**
+     * Converts a hue saturation luminosity value into a RGB color
+     */
+    //% weight=10
+    //% blockGap=50
+    //% mutate=objectdestructuring
+    //% mutateText=Packeta
+    //% mutateDefaults="myparam:message"
+    //% blockId=IR_callbackUser block="on obloq received"
+    export function IR_callbackUser(maqueencb: (packet: Packeta) => void) {
+        maqueenInit()
+        IR_callback(() => {
+            const packet = new Packeta();
+            packet.mye = maqueene;
+            maqueenparam = getParam();
+            packet.myparam = maqueenparam;
+            maqueencb(packet)
+        });
+    }
+
+    //% weight=10
+    //% blockId=IR_read block="read IR"
+    export function IR_read(): number {
+        maqueenInit()
+        return getParam()
+    }
+
+
+    function IR_callback(a: Action): void {
+        maqueencb = a
+        IrPressEvent += 1
+        onPressEvent(IrPressEvent, maqueencb)
     }
 
 }

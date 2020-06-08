@@ -10,6 +10,14 @@
     "files": [
         "README.md",
         "main.ts",
+        "enums.d.ts",
+        "shims.d.ts",
+        "valonIR.cpp",
+        "ReceiverIR.cpp",
+        "ReceiverIR.h",
+        "RemoteIR.h",
+        "TransmitterIR.cpp",
+        "TransmitterIR.h",
         "_locales/zh-cn/valon-strings.json",
         "_locales/zh-tw/valon-strings.json"
     ],

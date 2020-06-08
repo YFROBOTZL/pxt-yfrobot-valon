@@ -40,6 +40,9 @@
     "valon.Strip.show|block": "%strip|刷新显示",
     "valon.color|block": "%color",
     "valon.rgb|block": "红%red|绿%green|蓝%blue",
-    "valon.hsl|block": "色相 %h|饱和度 %s|亮度 %l"
+    "valon.hsl|block": "色相 %h|饱和度 %s|亮度 %l",
+
+    "valon.IR_callbackUser|block": "当接收到红外时运行",
+    "valon.IR_read|block": "红外的值"
     
 }
