@@ -183,22 +183,28 @@ namespace valon {
     export enum IrButton {
         //% block="any"
         Any = -1,
-        //% block=""
+        //% block="power"
         Power = 0xA2,
-        //% block="3"
+        //% block="MENU"
         MENU = -2,
-        //% block=">"
-        Left = 0x22,
-        //% block="OK"
-        Ok = 0x02,
-        //% block="▶"
-        Right = 0xc2,
-        //% block=" "
-        Unused_3 = -3,
+        //% block="TEST"
+        TEST = 0x22,
+        //% block="+"
+        PLUS = 0x02,
+        //% block="⏎"
+        Back = 0xc2,
+        //% block="◃"
+        Back2 = -3,
+        //% block="►"
+        Play = 0xa8,
+        //% block="▹"
+        F = -4,
         //% block="-"
-        Down = 0xa8,
-        //% block=" "
-        Unused_4 = -4,
+        Less = 0x4a,
+        //% block="C"
+        C = 0x4a,
+        //% block="0"
+        Number_0 = 0x4a,
         //% block="1"
         Number_1 = 0x68,
         //% block="2"
@@ -216,13 +222,7 @@ namespace valon {
         //% block="8"
         Number_8 = 0x38,
         //% block="9"
-        Number_9 = 0x5a,
-        //% block="*"
-        Star = 0x42,
-        //% block="0"
-        Number_0 = 0x4a,
-        //% block="#"
-        Hash = 0x52,
+        Number_9 = 0x5a
     }
 
     export enum IrButtonAction {
