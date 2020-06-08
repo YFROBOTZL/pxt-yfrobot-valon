@@ -228,39 +228,6 @@ namespace valon {
     }
 
     /**
-     * Read ultrasonic sensor.
-     */
-    //% blockId=valon_ultrasonic_sensor block="read ultrasonic sensor |%unit "
-    //% weight=95
-    export function Ultrasonic(unit: ValonPingUnit, maxCmDistance = 500): number {
-        let d
-        // send pulse
-        pins.setPull(valonUltrasonicTrig, PinPullMode.PullNone);
-        pins.digitalWritePin(valonUltrasonicTrig, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(valonUltrasonicTrig, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(valonUltrasonicTrig, 0);
-
-        // read pulse
-        // d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, maxCmDistance * 58);  // 8 / 340 = 
-        d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, 25000);
-        let ret = d;
-        // filter timeout spikes
-        if (ret == 0 && distanceBuf != 0) {
-            ret = distanceBuf;
-        }
-        distanceBuf = d;
-
-        return Math.floor(ret * 9 / 6 / 58);
-        // switch (unit) {
-        //     case ValonPingUnit.Centimeters: return Math.idiv(d, 58);
-        //     default: return d;
-        // }
-
-    }
-
-    /**
       * drive the motor in direction at speed
       * @param motor motor left/right/all
       * @param direction direction to turn
@@ -298,6 +265,39 @@ namespace valon {
     //% weight=80
     export function motorStop(motor: ValonMotors): void {
         motorRun(motor, 0, 0);
+    }
+
+    /**
+     * Read ultrasonic sensor.
+     */
+    //% blockId=valon_ultrasonic_sensor block="read ultrasonic sensor |%unit "
+    //% weight=80
+    export function Ultrasonic(unit: ValonPingUnit, maxCmDistance = 500): number {
+        let d
+        // send pulse
+        pins.setPull(valonUltrasonicTrig, PinPullMode.PullNone);
+        pins.digitalWritePin(valonUltrasonicTrig, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(valonUltrasonicTrig, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(valonUltrasonicTrig, 0);
+
+        // read pulse
+        // d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, maxCmDistance * 58);  // 8 / 340 = 
+        d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, 25000);
+        let ret = d;
+        // filter timeout spikes
+        if (ret == 0 && distanceBuf != 0) {
+            ret = distanceBuf;
+        }
+        distanceBuf = d;
+
+        return Math.floor(ret * 9 / 6 / 58);
+        // switch (unit) {
+        //     case ValonPingUnit.Centimeters: return Math.idiv(d, 58);
+        //     default: return d;
+        // }
+
     }
 
     /**
