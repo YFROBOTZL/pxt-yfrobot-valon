@@ -166,9 +166,9 @@ namespace valon {
     const enum IrButton {
         //% block="any"
         Any = -1,
-        //% block="\uf011"
+        //% block="d"
         Power = 0xA2,
-        //% block="\uf013"
+        //% block="3"
         MENU = -2,
         //% block=">>"
         Left = 0x22,
