@@ -183,7 +183,7 @@ namespace valon {
     export enum IrButton {
         //% block="any"
         Any = -1,
-        //% block="\uf011"
+        //% block=""
         Power = 0xA2,
         //% block="3"
         MENU = -2,
