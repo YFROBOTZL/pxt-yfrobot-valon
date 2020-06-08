@@ -15,6 +15,17 @@
     "valon.ValonRGBEYES.EyesRight": "右眼",
     "valon.ValonRGBEYES.EyesAll": "双眼",
 
+    "ValonEyesColors.Red|block": "红",
+    "ValonEyesColors.Orange|block": "橙",
+    "ValonEyesColors.Yellow|block": "黄",
+    "ValonEyesColors.Green|block": "緑",
+    "ValonEyesColors.Blue|block": "蓝",
+    "ValonEyesColors.Indigo|block": "靛蓝",
+    "ValonEyesColors.Violet|block": "紫罗兰",
+    "ValonEyesColors.Purple|block": "紫",
+    "ValonEyesColors.White|block": "白",
+    "ValonEyesColors.Black|block": "黑",
+
     "valon.writeLED|block": "LED灯|%ledn|%ledswitch",
     "valon.motorRun|block": "电机|%motor|方向|%dir|速度|%speed",
     "valon.motorStop|block": "电机 停止|%motors",

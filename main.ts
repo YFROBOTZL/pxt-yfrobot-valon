@@ -15,7 +15,7 @@ enum ValonPingUnit {
 /**
   * Pre-Defined LED colours
   */
-enum ValonColors {
+enum ValonEyesColors {
     //% block=red
     Red = 0xff0000,
     //% block=orange
@@ -390,7 +390,7 @@ namespace valon {
         //% blockId="valon_eyes_set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb"
         //% strip.defl=eyes
         //% weight=60
-        setEyesColor(eyes_n: ValonRGBEYES, rgb: ValonColors): void {
+        setEyesColor(eyes_n: ValonRGBEYES, rgb: ValonEyesColors): void {
             if (eyes_n == ValonRGBEYES.EyesAll) {
                 this.setPixelRGB(ValonRGBEYES.EyesLeft, rgb >> 0);
                 this.setPixelRGB(ValonRGBEYES.EyesRight, rgb >> 0);
@@ -547,7 +547,7 @@ namespace valon {
     //% weight=30  
     //% blockId="valon_eyes_colors" block="%color"
     //% advanced=true
-    export function colors(color: ValonColors): number {
+    export function colors(color: ValonEyesColors): number {
         return color;
     }
 
