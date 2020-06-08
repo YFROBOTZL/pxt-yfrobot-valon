@@ -1,5 +1,7 @@
 # pxt-yfrobot-demo
 
+[![Build Status](https://travis-ci.org/1010Technologies/pxt-makerbit-ir-receiver.svg?branch=master)](https://travis-ci.org/1010Technologies/pxt-makerbit-ir-receiver)
+
 ## License
 
 Licensed under the MIT License (MIT). See LICENSE file for more details.
