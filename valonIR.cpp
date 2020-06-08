@@ -53,8 +53,6 @@ enum class RemoteButton {
   Nine = 0x1a
 };
 
-//% color=50 weight=80
-//% icon="\uf1eb"
 namespace valonIR { 
   map<RemoteButton, vA> actions;
   map<RemoteButton, uint32_t> lastact;
