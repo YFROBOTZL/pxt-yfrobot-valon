@@ -787,7 +787,7 @@ namespace valon {
 
     /**
      * Connects to the IR receiver module at the specified pin and configures the IR protocol.
-     * @param pin IR receiver pin, eg: ValonExPin.ExPin1
+     * @param pin IR receiver pin, eg: DigtialPin.P3
      * @param protocol IR protocol, eg: IrProtocol.NEC
      */
     //% subcategory="IR Receiver"
@@ -798,7 +798,7 @@ namespace valon {
     //% pin.fieldOptions.tooltips="false"
     //% weight=15
     export function connectIrReceiver(
-        pin: ValonExPin,
+        pin: DigitalPin,
         protocol: IrProtocol
     ): void {
         if (irState) {
