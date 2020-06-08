@@ -11,9 +11,9 @@
     "valon.ValonLEDswitch.turnOff|block": "闭",
     "valon.ValonLED.LEDLeft|block": "左侧",
     "valon.ValonLED.LEDRight|block": "右侧",
-    "valon.ValonRGBEYES.EyesLeft": "左眼",
-    "valon.ValonRGBEYES.EyesRight": "右眼",
-    "valon.ValonRGBEYES.EyesAll": "双眼",
+    "valon.ValonRGBEYES.EyesLeft|block": "左眼",
+    "valon.ValonRGBEYES.EyesRight|block": "右眼",
+    "valon.ValonRGBEYES.EyesAll|block": "双眼",
 
     "ValonEyesColors.Red|block": "红",
     "ValonEyesColors.Orange|block": "橙",
