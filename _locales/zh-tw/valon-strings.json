@@ -16,5 +16,6 @@
     "valon.motorRun|block": "馬達|%motor|方向|%dir|速度|%speed",    
     "valon.motorStop|block": "馬達停止|%motors",
     "valon.Ultrasonic|block": "超音波距離|%unit",
-    "valon.readPatrol|block": "循跡感測器|%patrol"
+    "valon.readPatrol|block": "循跡感測器|%patrol",
+    "valon.create|block": "初始化RGBEyes%numleds|颗LED（模式%mode|）"
 }
