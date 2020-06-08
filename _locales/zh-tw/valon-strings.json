@@ -46,5 +46,5 @@
     "valon.onIrButton|block": "當接收到紅外時運行",
     "valon.irButton|block": "红外按键值",
     "valon.wasAnyIrButtonPressed|block": "任意按键被按下",
-    "valon.irButtonCode|block": "紅外按键%button|值："
+    "valon.irButtonCode|block": "紅外按键%button|值"
 }
