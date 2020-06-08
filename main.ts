@@ -83,6 +83,23 @@ namespace valon {
     //
     let valonEyesPin = DigitalPin.P11;
 
+    // IR
+    let irState: IrState;
+
+    const MICROBIT_MAKERBIT_IR_NEC = 777;
+    const MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID = 789;
+    const MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID = 790;
+    const IR_REPEAT = 256;
+    const IR_INCOMPLETE = 257;
+
+    interface IrState {
+        protocol: IrProtocol;
+        command: number;
+        hasNewCommand: boolean;
+        bitsReceived: uint8;
+        commandBits: uint8;
+    }
+
     let initialized = false
     let neoStrip: valon.Strip;
     let distanceBuf = 0;
@@ -163,14 +180,14 @@ namespace valon {
         ExPin2 = DigitalPin.P4
     }
 
-    const enum IrButton {
+    export enum IrButton {
         //% block="any"
         Any = -1,
         //% block="d"
         Power = 0xA2,
         //% block="3"
         MENU = -2,
-        //% block=">>"
+        //% block=">"
         Left = 0x22,
         //% block="OK"
         Ok = 0x02,
@@ -208,14 +225,14 @@ namespace valon {
         Hash = 0x52,
     }
 
-    const enum IrButtonAction {
+    export enum IrButtonAction {
         //% block="pressed"
         Pressed = 0,
         //% block="released"
         Released = 1,
     }
 
-    const enum IrProtocol {
+    export enum IrProtocol {
         //% block="Keyestudio"
         Keyestudio = 0,
         //% block="NEC"
@@ -698,23 +715,7 @@ namespace valon {
     }
 
 
-
-    let irState: IrState;
-
-    const MICROBIT_MAKERBIT_IR_NEC = 777;
-    const MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID = 789;
-    const MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID = 790;
-    const IR_REPEAT = 256;
-    const IR_INCOMPLETE = 257;
-
-    interface IrState {
-        protocol: IrProtocol;
-        command: number;
-        hasNewCommand: boolean;
-        bitsReceived: uint8;
-        commandBits: uint8;
-    }
-
+    //  IR 
     function pushBit(bit: number): number {
         irState.bitsReceived += 1;
         if (irState.bitsReceived <= 8) {
@@ -797,10 +798,7 @@ namespace valon {
     //% pin.fieldOptions.columns=4
     //% pin.fieldOptions.tooltips="false"
     //% weight=15
-    export function connectIrReceiver(
-        pin: DigitalPin,
-        protocol: IrProtocol
-    ): void {
+    export function connectIrReceiver(pin: DigitalPin, protocol: IrProtocol): void {
         if (irState) {
             return;
         }
@@ -882,11 +880,7 @@ namespace valon {
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
     //% weight=13
-    export function onIrButton(
-        button: IrButton,
-        action: IrButtonAction,
-        handler: () => void
-    ) {
+    export function onIrButton(button: IrButton, action: IrButtonAction, handler: () => void) {
         control.onEvent(
             action === IrButtonAction.Pressed
                 ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID
