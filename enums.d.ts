@@ -47,7 +47,5 @@
     Eight = 0x19,
     Nine = 0x1a,
     }
-declare namespace valonIR {
-}
 
 // Auto-generated. Do not edit. Really.
