@@ -387,7 +387,7 @@ namespace valon {
          * @param eyes_n position of the NeoPixel in the strip
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb=neopixel_colors"
+        //% blockId="valon_eyes_set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb=neopixel_colors"
         //% strip.defl=eyes
         //% weight=60
         setEyesColor(eyes_n: ValonRGBEYES, rgb: number): void {
@@ -404,7 +404,7 @@ namespace valon {
          * Set the brightness of the strip. This flag only applies to future operation.
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="neopixel_set_brightness" block="%eyes|set brightness %brightness" 
+        //% blockId="valon_eyes_set_brightness" block="%eyes|set brightness %brightness" 
         //% strip.defl=eyes
         //% weight=58
         setBrightness(brightness: number): void {
@@ -415,7 +415,7 @@ namespace valon {
          * Turn off all LEDs.
          * You need to call ``show`` to make the changes visible.
          */
-        //% blockId="neopixel_clear" block="%eyes|clear"
+        //% blockId="valon_eyes_clear" block="%eyes|clear"
         //% strip.defl=eyes
         //% weight=55
         clear(): void {
@@ -426,7 +426,7 @@ namespace valon {
         /**
          * Send all the changes to the strip.
          */
-        //% blockId="neopixel_show" block="%eyes|show" 
+        //% blockId="valon_eyes_show" block="%eyes|show" 
         //% strip.defl=eyes
         //% weight=53
         show() {
@@ -439,7 +439,7 @@ namespace valon {
          * Shows all LEDs to a given color (range 0-255 for r, g, b).
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
+        //% blockId="valon_eyes_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
         //% strip.defl=strip
         //% weight=40
         //% advanced=true
@@ -455,7 +455,7 @@ namespace valon {
          * @param pixeloffset position of the NeoPixel in the strip
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
+        //% blockId="valon_eyes_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
         //% strip.defl=strip
         //% weight=38
         //% advanced=true
@@ -525,7 +525,7 @@ namespace valon {
      * Create a new NeoPixel driver for eye's LEDs.
      * @param numleds number of leds in the eyes, eg: 2
      */
-    //% blockId="neopixel_create" block="NeoPixel init %numleds|leds as %mode"
+    //% blockId="valon_eyes_create" block="RGBEyes init %numleds|leds as %mode"
     //% weight=62  
     //% blockSetVariable=eyes
     export function create(numleds: number, mode: ValonEyesMode): Strip {
@@ -545,7 +545,7 @@ namespace valon {
      * Gets the RGB value of a known color
      */
     //% weight=30  
-    //% blockId="neopixel_colors" block="%color"
+    //% blockId="valon_eyes_colors" block="%color"
     //% advanced=true
     export function colors(color: ValonColors): number {
         return color;
@@ -558,7 +558,7 @@ namespace valon {
      * @param blue value of the blue channel between 0 and 255. eg: 255
      */
     //% weight=26
-    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
+    //% blockId="valon_eyes_rgb" block="red %red|green %green|blue %blue"
     //% advanced=true
     export function rgb(red: number, green: number, blue: number): number {
         return valon_packRGB(red, green, blue);
