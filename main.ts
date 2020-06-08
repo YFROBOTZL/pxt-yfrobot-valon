@@ -385,7 +385,7 @@ namespace valon {
         /**
          * Set LED to a given color (range 0-255 for r, g, b).
          * @param eyes_n position of the NeoPixel in the strip
-         * @param rgb RGB color of the LED
+         * @param rgb RGB color of the LED. eg: ValonEyesColors.red
          */
         //% blockId="valon_eyes_set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb"
         //% strip.defl=eyes

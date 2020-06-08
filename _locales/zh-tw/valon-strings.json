@@ -15,13 +15,13 @@
     "valon.ValonRGBEYES.EyesRight": "右眼",
     "valon.ValonRGBEYES.EyesAll": "雙眼",
 
-    "ValonEyesColors.Red|block": "红",
+    "ValonEyesColors.Red|block": "紅",
     "ValonEyesColors.Orange|block": "橙",
     "ValonEyesColors.Yellow|block": "黄",
     "ValonEyesColors.Green|block": "緑",
-    "ValonEyesColors.Blue|block": "蓝",
-    "ValonEyesColors.Indigo|block": "靛蓝",
-    "ValonEyesColors.Violet|block": "紫罗兰",
+    "ValonEyesColors.Blue|block": "藍",
+    "ValonEyesColors.Indigo|block": "靛藍",
+    "ValonEyesColors.Violet|block": "紫羅蘭",
     "ValonEyesColors.Purple|block": "紫",
     "ValonEyesColors.White|block": "白",
     "ValonEyesColors.Black|block": "黑",
@@ -32,5 +32,13 @@
     "valon.Ultrasonic|block": "超音波距離|%unit",
     "valon.readPatrol|block": "循跡感測器|%patrol",
     "valon.create|block": "初始化RGBEyes%numleds|顆LED（模式%mode|）",
-    "valon.Strip.setEyesColor|block": "%eyes|显示 %eyes_n|颜色：%rgb"
+    "valon.Strip.setEyesColor|block": "%eyes|顯示 %eyes_n|顏色：%rgb",
+    "valon.Strip.setBrightness|block": "%eyes|設置亮度為 %brightness",
+    "valon.Strip.clear|block": "%eyes|清除顯示",
+    "valon.Strip.show|block": "%eyes|刷新顯示",
+    "valon.Strip.showColor|block": "%strip|顯示颜色%rgb",
+    "valon.Strip.setPixelColor|block": "%strip|設置颜色 像素%pixeloffset|為 %rgb",
+    "valon.color|block": "%color",
+    "valon.rgb|block": "紅%red|綠%green|藍%blue",
+    "valon.hsl|block": "色相 %h|飽和度 %s|亮度 %l"
 }
