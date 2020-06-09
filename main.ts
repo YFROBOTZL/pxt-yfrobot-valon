@@ -119,9 +119,9 @@ namespace valon {
 
     // motor dir
     export enum ValonDir {
-        //% blockId="valon_CW" block="Forward"
+        //% blockId="valon_CW" block="forward"
         CW = 0,
-        //% blockId="valon_CCW" block="Backward"
+        //% blockId="valon_CCW" block="backward"
         CCW = 1
     }
 
@@ -133,10 +133,10 @@ namespace valon {
     }
 
     export enum ValonLEDswitch {
-        //% blockId="LEDturnOn" block="ON"
-        turnOn = 0x01,
-        //% blockId="LEDturnOff" block="OFF"
-        turnOff = 0x00
+        //% blockId="LEDturnOn" block="on"
+        TurnOn = 0x01,
+        //% blockId="LEDturnOff" block="off"
+        TurnOff = 0x00
     }
 
     export enum ValonRGBEYES {
@@ -185,9 +185,9 @@ namespace valon {
         Any = -1,
         //% block="power"
         Power = 0xa2,
-        //% block="MENU"
+        //% block="menu"
         MENU = 0xe2,
-        //% block="TEST"
+        //% block="test"
         TEST = 0x22,
         //% block="+"
         PLUS = 0x02,
@@ -203,7 +203,7 @@ namespace valon {
         Number_0 = 0x68,
         //% block="-"
         Less = 0x98,
-        //% block="C"
+        //% block="c"
         C = 0xb0,
         //% block="1"
         Number_1 = 0x30,
@@ -567,9 +567,9 @@ namespace valon {
         }
 
         private setAllRGB(rgb: number) {
-            let red = valon_unpackR(rgb);
-            let green = valon_unpackG(rgb);
-            let blue = valon_unpackB(rgb);
+            let red = unpackR(rgb);
+            let green = unpackG(rgb);
+            let blue = unpackB(rgb);
 
             const br = this.brightness;
             if (br < 255) {
@@ -591,9 +591,9 @@ namespace valon {
             let stride = this._mode === ValonEyesMode.RGBW ? 4 : 3;
             pixeloffset = (pixeloffset + this.start) * stride;
 
-            let red = valon_unpackR(rgb);
-            let green = valon_unpackG(rgb);
-            let blue = valon_unpackB(rgb);
+            let red = unpackR(rgb);
+            let green = unpackG(rgb);
+            let blue = unpackB(rgb);
 
             let br = this.brightness;
             if (br < 255) {
@@ -644,21 +644,21 @@ namespace valon {
     //% blockId="valon_eyes_rgb" block="red %red|green %green|blue %blue"
     //% advanced=true
     export function rgb(red: number, green: number, blue: number): number {
-        return valon_packRGB(red, green, blue);
+        return packRGB(red, green, blue);
     }
 
-    function valon_packRGB(a: number, b: number, c: number): number {
+    function packRGB(a: number, b: number, c: number): number {
         return ((a & 0xFF) << 16) | ((b & 0xFF) << 8) | (c & 0xFF);
     }
-    function valon_unpackR(rgb: number): number {
+    function unpackR(rgb: number): number {
         let r = (rgb >> 16) & 0xFF;
         return r;
     }
-    function valon_unpackG(rgb: number): number {
+    function unpackG(rgb: number): number {
         let g = (rgb >> 8) & 0xFF;
         return g;
     }
-    function valon_unpackB(rgb: number): number {
+    function unpackB(rgb: number): number {
         let b = (rgb) & 0xFF;
         return b;
     }
@@ -705,7 +705,7 @@ namespace valon {
         let r = r$ + m;
         let g = g$ + m;
         let b = b$ + m;
-        return valon_packRGB(r, g, b);
+        return packRGB(r, g, b);
     }
 
     export enum HueInterpolationDirection {
