@@ -321,7 +321,7 @@ namespace valon {
     //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2
     //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function motorRun(motor: ValonMotors, direction: ValonDir, speed: number): void {
-        if (motor > 2 || motor <= 0)
+        if (motor > 2 || motor < 0)
             return
 
         speed = clamp(speed, 0, 255) * 255.75;  // 0~255 > 0~1023
