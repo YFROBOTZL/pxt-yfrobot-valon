@@ -324,10 +324,10 @@ namespace valon {
         if (motor > 2 || motor < 0)
             return
 
-        speed = clamp(speed, 0, 255) * 255.75;  // 0~255 > 0~1023
+        speed = clamp(speed, 0, 255) * 4.01;  // 0~255 > 0~1023
 
         if (motor == ValonMotors.ML) {
-            pins.digitalWritePin(valonMotorRD, direction);
+            pins.digitalWritePin(valonMotorLD, direction);
             pins.analogWritePin(valonMotorLA, speed);
         } else if (motor == ValonMotors.MR) {
             pins.digitalWritePin(valonMotorRD, direction);
