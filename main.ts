@@ -181,8 +181,26 @@ namespace valon {
     }
 
     export enum IrButton {
+        //IR HANDLE
+        //% block="up"
+        UP = 0x11,
+        //% block="down"
+        DOWN = 0x91,
+        //% block="left"
+        LEFT = 0x81,
+        //% block="right"
+        RIGHT = 0xa1,
+        //% block="m1"
+        M1 = 0xe9,
+        //% block="m2"
+        M2 = 0x69,
+        //% block="a"
+        A = 0x21,
+        //% block="b"
+        B = 0x01,
         //% block="any"
         Any = -1,
+        // MINI IR 
         //% block="power"
         Power = 0xa2,
         //% block="menu"
@@ -223,23 +241,6 @@ namespace valon {
         Number_8 = 0x4a,
         //% block="9"
         Number_9 = 0x52,
-        //IR HANDLE
-        //% block="up"
-        UP = 0x11,
-        //% block="down"
-        DOWN = 0x91,
-        //% block="left"
-        LEFT = 0x81,
-        //% block="right"
-        RIGHT = 0xa1,
-        //% block="m1"
-        M1 = 0xe9,
-        //% block="m2"
-        M2 = 0x69,
-        //% block="a"
-        A = 0x21,
-        //% block="b"
-        B = 0x01,
     }
 
     export enum IrButtonAction {
