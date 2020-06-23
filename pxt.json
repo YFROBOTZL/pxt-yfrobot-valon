@@ -1,7 +1,7 @@
 {
     "name": "valon",
-    "version": "1.0.2",
-    "description": "Extension for YFRobot Valon",
+    "version": "1.0.3",
+    "description": "YFRobot Valon MakeCode Extensions For Micro:bit",
     "license": "MIT",
     "dependencies": {
         "core": "*",
