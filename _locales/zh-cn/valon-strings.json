@@ -43,6 +43,7 @@
     "valon.onIrButton|block": "当红外按键 %button| %action",
     "valon.irButton|block": "红外按键值",
     "valon.wasAnyIrButtonPressed|block": "任意按键被按下",
-    "valon.irButtonCode|block": "红外按键%button|值"
+    "valon.irButtonCode|block": "红外按键%button|值",
+    "valon.IrButton.UP|block":"up"
     
 }
