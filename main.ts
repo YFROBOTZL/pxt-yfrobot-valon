@@ -64,9 +64,150 @@ enum ValonEyesMode {
 //     action: Action;
 // }
 
+// Motor
+enum ValonMotors {
+    //% block="left"
+    ML = 0,
+    //% block="right"
+    MR = 1,
+    //% block="all"
+    MAll = 2
+}
+
+// motor dir
+enum ValonDir {
+    //% block="forward"
+    CW = 0,
+    //% block="backward"
+    CCW = 1
+}
+
+enum ValonLED {
+    //% block="left"
+    LEDLeft = 10,
+    //% block="right"
+    LEDRight = 9
+}
+
+enum ValonLEDswitch {
+    //% block="on"
+    TurnOn = 0x01,
+    //% blockId="LEDturnOff" block="off"
+    TurnOff = 0x00
+}
+
+enum ValonRGBEYES {
+    //% block="left"
+    EyesLeft = 1,
+    //% block="right"
+    EyesRight = 0,
+    //% block="all"
+    EyesAll = 2
+}
+
+// Patrol
+enum ValonPatrol {
+    //% block="left"
+    PatrolLeft = 1,
+    //% block="middle"
+    PatrolMiddle = 2,
+    //% block="right"
+    PatrolRight = 8
+}
+
+enum ValonVoltage {
+    //% block="high"
+    High = 0x01,
+    //% block="low"
+    Low = 0x00
+}
+
+enum ValonExPin {
+    //% block="expin1"
+    ExPin1 = DigitalPin.P3,
+    //% block="expin2"
+    ExPin2 = DigitalPin.P4
+}
+
+enum IrButton {
+    //IR HANDLE
+    //% block="up"
+    UP = 0x11,
+    //% block="down"
+    DOWN = 0x91,
+    //% block="left"
+    LEFT = 0x81,
+    //% block="right"
+    RIGHT = 0xa1,
+    //% block="m1"
+    M1 = 0xe9,
+    //% block="m2"
+    M2 = 0x69,
+    //% block="a"
+    A = 0x21,
+    //% block="b"
+    B = 0x01,
+    //% block="any"
+    Any = -1,
+    // MINI IR 
+    //% block="power"
+    Power = 0xa2,
+    //% block="menu"
+    MENU = 0xe2,
+    //% block="test"
+    TEST = 0x22,
+    //% block="+"
+    PLUS = 0x02,
+    //% block="back"
+    Back = 0xc2,
+    //% block="<<"
+    Back2 = 0xe0,
+    //% block="play"
+    Play = 0xa8,
+    //% block=">>"
+    F = 0x90,
+    //% block="0"
+    Number_0 = 0x68,
+    //% block="-"
+    Less = 0x98,
+    //% block="c"
+    C = 0xb0,
+    //% block="1"
+    Number_1 = 0x30,
+    //% block="2"
+    Number_2 = 0x18,
+    //% block="3"
+    Number_3 = 0x7a,
+    //% block="4"
+    Number_4 = 0x10,
+    //% block="5"
+    Number_5 = 0x38,
+    //% block="6"
+    Number_6 = 0x5a,
+    //% block="7"
+    Number_7 = 0x42,
+    //% block="8"
+    Number_8 = 0x4a,
+    //% block="9"
+    Number_9 = 0x52,
+}
+
+enum IrButtonAction {
+    //% block="pressed"
+    Pressed = 0,
+    //% block="released"
+    Released = 1,
+}
+
+enum IrProtocol {
+    //% block="Keyestudio"
+    Keyestudio = 0,
+    //% block="NEC"
+    NEC = 1,
+}
+
 //% color="#7BD239" weight=10 icon="\uf1b0"
 namespace valon {
-
     // motor pin 
     let valonMotorLD = DigitalPin.P13;
     let valonMotorLA = AnalogPin.P14;
@@ -103,206 +244,6 @@ namespace valon {
     let initialized = false
     let neoStrip: valon.Strip;
     let distanceBuf = 0;
-
-
-    // let kbCallback: KV[] = []
-
-    // Motor
-    export enum ValonMotors {
-        //% blockId="valon_left_motor" block="left"
-        ML = 0,
-        //% blockId="valon_right_motor" block="right"
-        MR = 1,
-        //% blockId="valon_all_motor" block="all"
-        MAll = 2
-    }
-
-    // motor dir
-    export enum ValonDir {
-        //% blockId="valon_CW" block="forward"
-        CW = 0,
-        //% blockId="valon_CCW" block="backward"
-        CCW = 1
-    }
-
-    export enum ValonLED {
-        //% blockId="LEDLeft" block="left"
-        LEDLeft = 10,
-        //% blockId="LEDRight" block="right"
-        LEDRight = 9
-    }
-
-    export enum ValonLEDswitch {
-        //% blockId="LEDturnOn" block="on"
-        TurnOn = 0x01,
-        //% blockId="LEDturnOff" block="off"
-        TurnOff = 0x00
-    }
-
-    export enum ValonRGBEYES {
-        //% blockId="valon_EyesLeft" block="left"
-        EyesLeft = 1,
-        //% blockId="valon_EyesRight" block="right"
-        EyesRight = 0,
-        //% blockId="valon_EyesALL" block="all"
-        EyesAll = 2
-    }
-
-    // Patrol
-    export enum ValonPatrol {
-        //% blockId="valon_patrolLeft" block="left"
-        PatrolLeft = 1,
-        //% blockId="valon_patrolMiddle" block="middle"
-        PatrolMiddle = 2,
-        //% blockId="valon_patrolRight" block="right"
-        PatrolRight = 8
-    }
-
-    // export enum ValonPatrol1 {
-    //     //% blockId="valon_patrolLeft" block="left"
-    //     PatrolLeft = 0x10,
-    //     //% blockId="valon_patrolMiddle" block="middle"
-    //     PatrolMiddle = 0x20,
-    //     //% blockId="valon_patrolRight" block="right"
-    //     PatrolRight = 0x30
-    // }
-    export enum ValonVoltage {
-        //% block="high"
-        High = 0x01,
-        //% block="low"
-        Low = 0x00
-    }
-
-    export enum ValonExPin {
-        //% blockId="ExPin1" block="expin1"
-        ExPin1 = DigitalPin.P3,
-        //% blockId="ExPin2" block="expin2"
-        ExPin2 = DigitalPin.P4
-    }
-
-    export enum IrButton {
-        //IR HANDLE
-        //% block="up"
-        UP = 0x11,
-        //% block="down"
-        DOWN = 0x91,
-        //% block="left"
-        LEFT = 0x81,
-        //% block="right"
-        RIGHT = 0xa1,
-        //% block="m1"
-        M1 = 0xe9,
-        //% block="m2"
-        M2 = 0x69,
-        //% block="a"
-        A = 0x21,
-        //% block="b"
-        B = 0x01,
-        //% block="any"
-        Any = -1,
-        // MINI IR 
-        //% block="power"
-        Power = 0xa2,
-        //% block="menu"
-        MENU = 0xe2,
-        //% block="test"
-        TEST = 0x22,
-        //% block="+"
-        PLUS = 0x02,
-        //% block="back"
-        Back = 0xc2,
-        //% block="<<"
-        Back2 = 0xe0,
-        //% block="play"
-        Play = 0xa8,
-        //% block=">>"
-        F = 0x90,
-        //% block="0"
-        Number_0 = 0x68,
-        //% block="-"
-        Less = 0x98,
-        //% block="c"
-        C = 0xb0,
-        //% block="1"
-        Number_1 = 0x30,
-        //% block="2"
-        Number_2 = 0x18,
-        //% block="3"
-        Number_3 = 0x7a,
-        //% block="4"
-        Number_4 = 0x10,
-        //% block="5"
-        Number_5 = 0x38,
-        //% block="6"
-        Number_6 = 0x5a,
-        //% block="7"
-        Number_7 = 0x42,
-        //% block="8"
-        Number_8 = 0x4a,
-        //% block="9"
-        Number_9 = 0x52,
-    }
-
-    export enum IrButtonAction {
-        //% block="pressed"
-        Pressed = 0,
-        //% block="released"
-        Released = 1,
-    }
-
-    export enum IrProtocol {
-        //% block="Keyestudio"
-        Keyestudio = 0,
-        //% block="NEC"
-        NEC = 1,
-    }
-
-    export enum ValonTurns {
-        //% blockId="T1B4" block="1/4"
-        T1B4 = 90,
-        //% blockId="T1B2" block="1/2"
-        T1B2 = 180,
-        //% blockId="T1B0" block="1"
-        T1B0 = 360,
-        //% blockId="T2B0" block="2"
-        T2B0 = 720,
-        //% blockId="T3B0" block="3"
-        T3B0 = 1080,
-        //% blockId="T4B0" block="4"
-        T4B0 = 1440,
-        //% blockId="T5B0" block="5"
-        T5B0 = 1800
-    }
-
-    export enum ValonServos {
-        S1 = 0x01,
-        S2 = 0x02,
-        S3 = 0x03,
-        S4 = 0x04,
-        S5 = 0x05,
-        S6 = 0x06,
-        S7 = 0x07,
-        S8 = 0x08
-    }
-
-    function i2cwrite(addr: number, reg: number, value: number) {
-        let buf = pins.createBuffer(2)
-        buf[0] = reg
-        buf[1] = value
-        pins.i2cWriteBuffer(addr, buf)
-    }
-
-    function i2ccmd(addr: number, value: number) {
-        let buf = pins.createBuffer(1)
-        buf[0] = value
-        pins.i2cWriteBuffer(addr, buf)
-    }
-
-    function i2cread(addr: number, reg: number) {
-        pins.i2cWriteNumber(addr, reg, NumberFormat.UInt8BE);
-        let val = pins.i2cReadNumber(addr, NumberFormat.UInt8BE);
-        return val;
-    }
 
     function clamp(value: number, min: number, max: number): number {
         return Math.max(Math.min(max, value), min);
