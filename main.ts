@@ -51,18 +51,18 @@ enum ValonEyesMode {
     RGBW = 2
 }
 
-enum state {
-    state1 = 0x10,
-    state2 = 0x11,
-    state3 = 0x20,
-    state4 = 0x21,
-    state5 = 0x30,
-    state6 = 0x31
-}
-interface KV {
-    key: state;
-    action: Action;
-}
+// enum state {
+//     state1 = 0x10,
+//     state2 = 0x11,
+//     state3 = 0x20,
+//     state4 = 0x21,
+//     state5 = 0x30,
+//     state6 = 0x31
+// }
+// interface KV {
+//     key: state;
+//     action: Action;
+// }
 
 //% color="#7BD239" weight=10 icon="\uf1b0"
 namespace valon {
@@ -158,14 +158,14 @@ namespace valon {
         PatrolRight = 8
     }
 
-    export enum ValonPatrol1 {
-        //% blockId="valon_patrolLeft" block="left"
-        PatrolLeft = 0x10,
-        //% blockId="valon_patrolMiddle" block="middle"
-        PatrolMiddle = 0x20,
-        //% blockId="valon_patrolRight" block="right"
-        PatrolRight = 0x30
-    }
+    // export enum ValonPatrol1 {
+    //     //% blockId="valon_patrolLeft" block="left"
+    //     PatrolLeft = 0x10,
+    //     //% blockId="valon_patrolMiddle" block="middle"
+    //     PatrolMiddle = 0x20,
+    //     //% blockId="valon_patrolRight" block="right"
+    //     PatrolRight = 0x30
+    // }
     export enum ValonVoltage {
         //% block="high"
         High = 0x01,
@@ -209,13 +209,13 @@ namespace valon {
         TEST = 0x22,
         //% block="+"
         PLUS = 0x02,
-        //% block="⏎"
+        //% block="back"
         Back = 0xc2,
-        //% block="◃◃"
+        //% block="<<"
         Back2 = 0xe0,
-        //% block="►"
+        //% block="play"
         Play = 0xa8,
-        //% block="▹▹"
+        //% block=">>"
         F = 0x90,
         //% block="0"
         Number_0 = 0x68,
@@ -313,7 +313,8 @@ namespace valon {
      */
 
     //% weight=100
-    //% blockId=writeLED block="LEDlight |%ledn turn |%ledswitch"
+    //blockId=writeLED block="LEDlight |%ledn turn |%ledswitch"
+    //% blockId=writeLED block="LED灯 |%ledn |%ledswitch"
     //% ledn.fieldEditor="gridpicker" ledn.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: ValonLED, ledswitch: ValonLEDswitch): void {
@@ -683,9 +684,9 @@ namespace valon {
 
     /**
      * Converts a hue saturation luminosity value into a RGB color
-     * @param h hue from 0 to 360
-     * @param s saturation from 0 to 99
-     * @param l luminosity from 0 to 99
+     * @param h hue from 0 to 360. eg: 100
+     * @param s saturation from 0 to 99. eg: 50
+     * @param l luminosity from 0 to 99. eg: 50
      */
     //% blockId=neopixelHSL block="hue %h|saturation %s|luminosity %l"
     //% advanced=true
