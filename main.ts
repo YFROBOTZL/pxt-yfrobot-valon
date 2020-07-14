@@ -105,7 +105,7 @@ namespace valon {
     let distanceBuf = 0;
 
 
-    let kbCallback: KV[] = []
+    // let kbCallback: KV[] = []
 
     // Motor
     export enum ValonMotors {
