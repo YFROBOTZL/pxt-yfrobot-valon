@@ -254,8 +254,7 @@ namespace valon {
      */
 
     //% weight=100
-    //blockId=writeLED block="LEDlight |%ledn turn |%ledswitch"
-    //% blockId=writeLED block="LED灯 |%ledn |%ledswitch"
+    //% blockId=writeLED block="LEDlight |%ledn turn |%ledswitch"
     //% ledn.fieldEditor="gridpicker" ledn.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: ValonLED, ledswitch: ValonLEDswitch): void {
