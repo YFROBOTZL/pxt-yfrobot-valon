@@ -368,49 +368,6 @@ namespace valon {
     }
 
     /**
-      * Line tracking sensor event function
-      */
-    //% weight=65
-    //% blockId=valon_kb_event block="on|%value line tracking sensor|%vi"
-    // export function ltEvent(value: ValonPatrol1, vi: ValonVoltage, a: Action) {
-    //     let state = value + vi;
-    //     serial.writeNumber(state)
-    //     let item: KV = { key: state, action: a };
-    //     kbCallback.push(item);
-    // }
-    // let x: number
-    // let i: number = 1;
-    // function patorlState(): number {
-    //     switch (i) {
-    //         case 1: x = pins.digitalReadPin(DigitalPin.P1) == 0 ? 0x10 : 0; break;
-    //         case 2: x = pins.digitalReadPin(DigitalPin.P1) == 1 ? 0x11 : 0; break;
-    //         case 3: x = pins.digitalReadPin(DigitalPin.P2) == 0 ? 0x20 : 0; break;
-    //         case 4: x = pins.digitalReadPin(DigitalPin.P2) == 1 ? 0x21 : 0; break;
-    //         case 5: x = pins.digitalReadPin(DigitalPin.P8) == 0 ? 0x30 : 0; break;
-    //         default: x = pins.digitalReadPin(DigitalPin.P8) == 1 ? 0x31 : 0; break;
-    //     }
-    //     i += 1;
-    //     if (i == 5) i = 1;
-
-    //     return x;
-    // }
-
-    // basic.forever(() => {
-    //     if (kbCallback != null) {
-    //         let sta = patorlState();
-    //         if (sta != 0) {
-    //             for (let item of kbCallback) {
-    //                 if (item.key == sta) {
-    //                     item.action();
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     basic.pause(50);
-    // })
-
-
-    /**
      * A NeoPixel strip
      */
     export class Strip {
