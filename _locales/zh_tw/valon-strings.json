@@ -14,7 +14,6 @@
     "ValonRGBEYES.EyesLeft|block": "左眼",
     "ValonRGBEYES.EyesRight|block": "右眼",
     "ValonRGBEYES.EyesAll|block": "雙眼",
-
     "ValonEyesColors.Red|block": "紅",
     "ValonEyesColors.Orange|block": "橙",
     "ValonEyesColors.Yellow|block": "黄",
@@ -25,7 +24,6 @@
     "ValonEyesColors.Purple|block": "紫",
     "ValonEyesColors.White|block": "白",
     "ValonEyesColors.Black|block": "黑",
-
     "valon.writeLED|block": "LED燈 |%ledn |%ledswitch",
     "valon.motorRun|block": "馬達|%motor|方向|%dir|速度|%speed",    
     "valon.motorStop|block": "馬達 停止|%motors",
@@ -41,7 +39,6 @@
     "valon.color|block": "%color",
     "valon.rgb|block": "紅%red|綠%green|藍%blue",
     "valon.hsl|block": "色相 %h|飽和度 %s|亮度 %l",
-
     "valon.connectIrReceiver|block": "連接紅外接收到 %pin| 編碼格式：%protocol",
     "valon.onIrButton|block": "當紅外按鍵 %button| %action",
     "valon.irButton|block": "紅外按键值",
