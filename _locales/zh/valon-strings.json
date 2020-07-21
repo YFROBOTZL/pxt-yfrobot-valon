@@ -10,9 +10,6 @@
     "ValonMotors.MR|block": "右侧",
     "ValonMotors.MAll|block": "全部",
     "ValonDir.CW|block": "正转",
-    "ValonDir.CCW|block": "反转",
-
-    "valon.motorStop|block": "电机 |%motor 停止"
-
+    "ValonDir.CCW|block": "反转"
     
 }
