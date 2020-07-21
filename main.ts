@@ -8,48 +8,48 @@
  */
 
 
-enum ValonPingUnit {
-    //% block="cm"
-    Centimeters,
-}
+// enum ValonPingUnit {
+//     //% block="cm"
+//     Centimeters,
+// }
 
 /**
   * Pre-Defined LED colours
   */
-enum ValonEyesColors {
-    //% block=red
-    Red = 0xff0000,
-    //% block=orange
-    Orange = 0xffa500,
-    //% block=yellow
-    Yellow = 0xffff00,
-    //% block=green
-    Green = 0x00ff00,
-    //% block=blue
-    Blue = 0x0000ff,
-    //% block=indigo
-    Indigo = 0x4b0082,
-    //% block=violet
-    Violet = 0x8a2be2,
-    //% block=purple
-    Purple = 0xff00ff,
-    //% block=white
-    White = 0xffffff,
-    //% block=black
-    Black = 0x000000
-}
+// enum ValonEyesColors {
+//     //% block=red
+//     Red = 0xff0000,
+//     //% block=orange
+//     Orange = 0xffa500,
+//     //% block=yellow
+//     Yellow = 0xffff00,
+//     //% block=green
+//     Green = 0x00ff00,
+//     //% block=blue
+//     Blue = 0x0000ff,
+//     //% block=indigo
+//     Indigo = 0x4b0082,
+//     //% block=violet
+//     Violet = 0x8a2be2,
+//     //% block=purple
+//     Purple = 0xff00ff,
+//     //% block=white
+//     White = 0xffffff,
+//     //% block=black
+//     Black = 0x000000
+// }
 
 /**
  * Different modes for RGB or RGB+W NeoPixel strips
  */
-enum ValonEyesMode {
-    //% block="GRB"
-    RGB = 1,
-    //% block="RGB"
-    RGB_RGB = 3,
-    //% block="RGB+W"
-    RGBW = 2
-}
+// enum ValonEyesMode {
+//     //% block="GRB"
+//     RGB = 1,
+//     //% block="RGB"
+//     RGB_RGB = 3,
+//     //% block="RGB+W"
+//     RGBW = 2
+// }
 
 // enum state {
 //     state1 = 0x10,
@@ -96,115 +96,115 @@ enum ValonLEDswitch {
     TurnOff = 0x00
 }
 
-enum ValonRGBEYES {
-    //% block="left"
-    EyesLeft = 1,
-    //% block="right"
-    EyesRight = 0,
-    //% block="all"
-    EyesAll = 2
-}
+// enum ValonRGBEYES {
+//     //% block="left"
+//     EyesLeft = 1,
+//     //% block="right"
+//     EyesRight = 0,
+//     //% block="all"
+//     EyesAll = 2
+// }
 
 // Patrol
-enum ValonPatrol {
-    //% block="left"
-    PatrolLeft = 1,
-    //% block="middle"
-    PatrolMiddle = 2,
-    //% block="right"
-    PatrolRight = 8
-}
+// enum ValonPatrol {
+//     //% block="left"
+//     PatrolLeft = 1,
+//     //% block="middle"
+//     PatrolMiddle = 2,
+//     //% block="right"
+//     PatrolRight = 8
+// }
 
-enum ValonVoltage {
-    //% block="high"
-    High = 0x01,
-    //% block="low"
-    Low = 0x00
-}
+// enum ValonVoltage {
+//     //% block="high"
+//     High = 0x01,
+//     //% block="low"
+//     Low = 0x00
+// }
 
-enum ValonExPin {
-    //% block="expin1"
-    ExPin1 = DigitalPin.P3,
-    //% block="expin2"
-    ExPin2 = DigitalPin.P4
-}
+// enum ValonExPin {
+//     //% block="expin1"
+//     ExPin1 = DigitalPin.P3,
+//     //% block="expin2"
+//     ExPin2 = DigitalPin.P4
+// }
 
-enum IrButton {
-    //IR HANDLE
-    //% block="up"
-    UP = 0x11,
-    //% block="down"
-    DOWN = 0x91,
-    //% block="left"
-    LEFT = 0x81,
-    //% block="right"
-    RIGHT = 0xa1,
-    //% block="m1"
-    M1 = 0xe9,
-    //% block="m2"
-    M2 = 0x69,
-    //% block="a"
-    A = 0x21,
-    //% block="b"
-    B = 0x01,
-    //% block="any"
-    Any = -1,
-    // MINI IR 
-    //% block="power"
-    Power = 0xa2,
-    //% block="menu"
-    MENU = 0xe2,
-    //% block="test"
-    TEST = 0x22,
-    //% block="+"
-    PLUS = 0x02,
-    //% block="back"
-    Back = 0xc2,
-    //% block="<<"
-    Back2 = 0xe0,
-    //% block="play"
-    Play = 0xa8,
-    //% block=">>"
-    F = 0x90,
-    //% block="0"
-    Number_0 = 0x68,
-    //% block="-"
-    Less = 0x98,
-    //% block="c"
-    C = 0xb0,
-    //% block="1"
-    Number_1 = 0x30,
-    //% block="2"
-    Number_2 = 0x18,
-    //% block="3"
-    Number_3 = 0x7a,
-    //% block="4"
-    Number_4 = 0x10,
-    //% block="5"
-    Number_5 = 0x38,
-    //% block="6"
-    Number_6 = 0x5a,
-    //% block="7"
-    Number_7 = 0x42,
-    //% block="8"
-    Number_8 = 0x4a,
-    //% block="9"
-    Number_9 = 0x52,
-}
+// enum IrButton {
+//     //IR HANDLE
+//     //% block="up"
+//     UP = 0x11,
+//     //% block="down"
+//     DOWN = 0x91,
+//     //% block="left"
+//     LEFT = 0x81,
+//     //% block="right"
+//     RIGHT = 0xa1,
+//     //% block="m1"
+//     M1 = 0xe9,
+//     //% block="m2"
+//     M2 = 0x69,
+//     //% block="a"
+//     A = 0x21,
+//     //% block="b"
+//     B = 0x01,
+//     //% block="any"
+//     Any = -1,
+//     // MINI IR 
+//     //% block="power"
+//     Power = 0xa2,
+//     //% block="menu"
+//     MENU = 0xe2,
+//     //% block="test"
+//     TEST = 0x22,
+//     //% block="+"
+//     PLUS = 0x02,
+//     //% block="back"
+//     Back = 0xc2,
+//     //% block="<<"
+//     Back2 = 0xe0,
+//     //% block="play"
+//     Play = 0xa8,
+//     //% block=">>"
+//     F = 0x90,
+//     //% block="0"
+//     Number_0 = 0x68,
+//     //% block="-"
+//     Less = 0x98,
+//     //% block="c"
+//     C = 0xb0,
+//     //% block="1"
+//     Number_1 = 0x30,
+//     //% block="2"
+//     Number_2 = 0x18,
+//     //% block="3"
+//     Number_3 = 0x7a,
+//     //% block="4"
+//     Number_4 = 0x10,
+//     //% block="5"
+//     Number_5 = 0x38,
+//     //% block="6"
+//     Number_6 = 0x5a,
+//     //% block="7"
+//     Number_7 = 0x42,
+//     //% block="8"
+//     Number_8 = 0x4a,
+//     //% block="9"
+//     Number_9 = 0x52,
+// }
 
-enum IrButtonAction {
-    //% block="pressed"
-    Pressed = 0,
-    //% block="released"
-    Released = 1,
-}
+// enum IrButtonAction {
+//     //% block="pressed"
+//     Pressed = 0,
+//     //% block="released"
+//     Released = 1,
+// }
 
-enum IrProtocol {
-    //% block="Keyestudio"
-    Keyestudio = 0,
-    //% block="NEC"
-    NEC = 1,
-}
+// enum IrProtocol {
+//     //% block="Keyestudio"
+//     Keyestudio = 0,
+//     //% block="NEC"
+//     NEC = 1,
+// }
 
 //% color="#7BD239" weight=10 icon="\uf1b0" block="valon"
 namespace valon {
@@ -225,7 +225,7 @@ namespace valon {
     let valonEyesPin = DigitalPin.P11;
 
     // IR
-    let irState: IrState;
+    // let irState: IrState;
 
     const MICROBIT_MAKERBIT_IR_NEC = 777;
     const MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID = 789;
@@ -233,13 +233,13 @@ namespace valon {
     const IR_REPEAT = 256;
     const IR_INCOMPLETE = 257;
 
-    interface IrState {
-        protocol: IrProtocol;
-        command: number;
-        hasNewCommand: boolean;
-        bitsReceived: uint8;
-        commandBits: uint8;
-    }
+    // interface IrState {
+    //     protocol: IrProtocol;
+    //     command: number;
+    //     hasNewCommand: boolean;
+    //     bitsReceived: uint8;
+    //     commandBits: uint8;
+    // }
 
     let initialized = false
     // let neoStrip: valon.Strip;

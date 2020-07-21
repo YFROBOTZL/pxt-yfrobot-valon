@@ -1,13 +1,18 @@
 {
+    "valon.writeLED|block": "LED灯 |%ledn |%ledswitch",
+    "ValonLED.LEDLeft|block": "左侧",
+    "ValonLED.LEDRight|block": "右侧",
+    "ValonLEDswitch.TurnOn|block": "开",
+    "ValonLEDswitch.TurnOff|block": "关",
+
+    "valon.motorRun|block": "电机|%motor|方向|%dir|速度|%speed",
     "ValonMotors.ML|block": "左侧",
     "ValonMotors.MR|block": "右侧",
     "ValonMotors.MAll|block": "全部",
     "ValonDir.CW|block": "正转",
     "ValonDir.CCW|block": "反转",
-    "ValonLEDswitch.TurnOn|block": "开",
-    "ValonLEDswitch.TurnOff|block": "关",
-    "ValonLED.LEDLeft|block": "左侧",
-    "ValonLED.LEDRight|block": "右侧"
+    
+    "valon.motorStop|block": "电机 停止|%motors"
 
     
 }
