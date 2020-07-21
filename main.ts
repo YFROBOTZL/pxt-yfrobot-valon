@@ -206,7 +206,7 @@ enum IrProtocol {
     NEC = 1,
 }
 
-//% color="#7BD239" weight=10 icon="\uf1b0"
+//% color="#7BD239" weight=10 icon="\uf1b0" block="valon"
 namespace valon {
     // motor pin 
     let valonMotorLD = DigitalPin.P13;
