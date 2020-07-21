@@ -208,21 +208,24 @@ enum ValonLEDswitch {
 
 //% color="#7BD239" weight=10 icon="\uf1b0" block="valon"
 namespace valon {
-    // motor pin 
-    let valonMotorLD = DigitalPin.P13;
-    let valonMotorLA = AnalogPin.P14;
-    let valonMotorRD = DigitalPin.P15;
-    let valonMotorRA = AnalogPin.P16;
-    // ultrasonic pin
-    let valonUltrasonicTrig = DigitalPin.P5;
-    let valonUltrasonicEcho = DigitalPin.P11;
-    // patrol pin
-    let valonPatrolLeft = DigitalPin.P1;
-    let valonPatrolMiddle = DigitalPin.P2;
-    let valonPatrolRight = DigitalPin.P8;
+    // LED pin 
+    let valonLEDD1 = DigitalPin.P10;
+    let valonLEDD2 = DigitalPin.P9;
+    // // motor pin 
+    // let valonMotorLD = DigitalPin.P13;
+    // let valonMotorLA = AnalogPin.P14;
+    // let valonMotorRD = DigitalPin.P15;
+    // let valonMotorRA = AnalogPin.P16;
+    // // ultrasonic pin
+    // let valonUltrasonicTrig = DigitalPin.P5;
+    // let valonUltrasonicEcho = DigitalPin.P11;
+    // // patrol pin
+    // let valonPatrolLeft = DigitalPin.P1;
+    // let valonPatrolMiddle = DigitalPin.P2;
+    // let valonPatrolRight = DigitalPin.P8;
 
-    //
-    let valonEyesPin = DigitalPin.P11;
+    // //
+    // let valonEyesPin = DigitalPin.P11;
 
     // IR
     // let irState: IrState;
@@ -260,9 +263,9 @@ namespace valon {
     export function writeLED(ledn: ValonLED, ledswitch: ValonLEDswitch): void {
         led.enable(false);
         if (ledn == ValonLED.LEDLeft) {
-            pins.digitalWritePin(DigitalPin.P10, ledswitch)
+            pins.digitalWritePin(valonLEDD1, ledswitch)
         } else if (ledn == ValonLED.LEDRight) {
-            pins.digitalWritePin(DigitalPin.P9, ledswitch)
+            pins.digitalWritePin(valonLEDD2, ledswitch)
         } else {
             return
         }
