@@ -227,11 +227,11 @@ namespace valon {
     // IR
     // let irState: IrState;
 
-    const MICROBIT_MAKERBIT_IR_NEC = 777;
-    const MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID = 789;
-    const MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID = 790;
-    const IR_REPEAT = 256;
-    const IR_INCOMPLETE = 257;
+    // const MICROBIT_MAKERBIT_IR_NEC = 777;
+    // const MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID = 789;
+    // const MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID = 790;
+    // const IR_REPEAT = 256;
+    // const IR_INCOMPLETE = 257;
 
     // interface IrState {
     //     protocol: IrProtocol;
@@ -241,9 +241,9 @@ namespace valon {
     //     commandBits: uint8;
     // }
 
-    let initialized = false
+    // let initialized = false
     // let neoStrip: valon.Strip;
-    let distanceBuf = 0;
+    // let distanceBuf = 0;
 
     function clamp(value: number, min: number, max: number): number {
         return Math.max(Math.min(max, value), min);
@@ -268,36 +268,36 @@ namespace valon {
         }
     }
 
-    /**
-      * drive the motor in direction at speed
-      * @param motor motor left/right/all
-      * @param direction direction to turn
-      * @param speed speed of motors (0 to 255). eg: 120
-      */
-    //% blockId=valon_motor_run block="Motor|%motor dir|%direction speed|%speed"
-    //% weight=85
-    //% speed.min=0 speed.max=255
-    //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
-    export function motorRun(motor: ValonMotors, direction: ValonDir, speed: number): void {
-        if (motor > 2 || motor < 0)
-            return
+    // /**
+    //   * drive the motor in direction at speed
+    //   * @param motor motor left/right/all
+    //   * @param direction direction to turn
+    //   * @param speed speed of motors (0 to 255). eg: 120
+    //   */
+    // //% blockId=valon_motor_run block="Motor|%motor dir|%direction speed|%speed"
+    // //% weight=85
+    // //% speed.min=0 speed.max=255
+    // //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2
+    // //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
+    // export function motorRun(motor: ValonMotors, direction: ValonDir, speed: number): void {
+    //     if (motor > 2 || motor < 0)
+    //         return
 
-        speed = clamp(speed, 0, 255) * 4.01;  // 0~255 > 0~1023
+    //     speed = clamp(speed, 0, 255) * 4.01;  // 0~255 > 0~1023
 
-        if (motor == ValonMotors.ML) {
-            pins.digitalWritePin(valonMotorLD, direction);
-            pins.analogWritePin(valonMotorLA, speed);
-        } else if (motor == ValonMotors.MR) {
-            pins.digitalWritePin(valonMotorRD, direction);
-            pins.analogWritePin(valonMotorRA, speed);
-        } else if (motor == ValonMotors.MAll) {
-            pins.digitalWritePin(valonMotorRD, direction);
-            pins.analogWritePin(valonMotorRA, speed);
-            pins.digitalWritePin(valonMotorLD, direction);
-            pins.analogWritePin(valonMotorLA, speed);
-        }
-    }
+    //     if (motor == ValonMotors.ML) {
+    //         pins.digitalWritePin(valonMotorLD, direction);
+    //         pins.analogWritePin(valonMotorLA, speed);
+    //     } else if (motor == ValonMotors.MR) {
+    //         pins.digitalWritePin(valonMotorRD, direction);
+    //         pins.analogWritePin(valonMotorRA, speed);
+    //     } else if (motor == ValonMotors.MAll) {
+    //         pins.digitalWritePin(valonMotorRD, direction);
+    //         pins.analogWritePin(valonMotorRA, speed);
+    //         pins.digitalWritePin(valonMotorLD, direction);
+    //         pins.analogWritePin(valonMotorLA, speed);
+    //     }
+    // }
 
     // /**
     //  * stop the motor
