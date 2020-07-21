@@ -10,6 +10,7 @@
     "files": [
         "main.ts",
         "_locales/zh/valon-strings.json",
+        "_locales/zh/valon-jsdoc-strings.json",
         "README.md"
     ],
     "testFiles": [
