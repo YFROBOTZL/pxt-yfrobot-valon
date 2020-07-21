@@ -9,7 +9,6 @@
     },
     "files": [
         "main.ts",
-        "_locales/zh/valon-strings.json",
         "README.md"
     ],
     "testFiles": [
