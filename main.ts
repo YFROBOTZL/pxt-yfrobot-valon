@@ -427,39 +427,10 @@ namespace valon {
         //% blockId="valon_eyes_show" block="%strip|show" 
         //% strip.defl=strip
         //% weight=35
-        //% advanced=true
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
-            // ws2812b.sendBuffer(this.buf, this.pin);
-        }
-
-        /**
-         * Shows all LEDs to a given color (range 0-255 for r, g, b).
-         * @param rgb RGB color of the LED
-         */
-        //% blockId="valon_eyes_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
-        //% strip.defl=strip
-        //% weight=40
-        //% advanced=true
-        showColor(rgb: number) {
-            rgb = rgb >> 0;
-            this.setAllRGB(rgb);
-            this.show();
-        }
-
-        /**
-         * Set LED to a given color (range 0-255 for r, g, b).
-         * You need to call ``show`` to make the changes visible.
-         * @param pixeloffset position of the NeoPixel in the strip
-         * @param rgb RGB color of the LED
-         */
-        //% blockId="valon_eyes_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
-        //% strip.defl=strip
-        //% weight=38
-        //% advanced=true
-        setPixelColor(pixeloffset: number, rgb: number): void {
-            this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
+            ws2812b.sendBuffer(this.buf, this.pin);
         }
 
         /**
