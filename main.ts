@@ -299,14 +299,14 @@ namespace valon {
         }
     }
 
-    // /**
-    //  * stop the motor
-    //  */
-    // //% blockId=valon_stop_motor block="Motor |%motor Stop"
-    // //% weight=80
-    // export function motorStop(motor: ValonMotors): void {
-    //     motorRun(motor, 0, 0);
-    // }
+    /**
+     * stop the motor
+     */
+    //% blockId=valon_stop_motor block="Motor |%motor Stop"
+    //% weight=80
+    export function motorStop(motor: ValonMotors): void {
+        motorRun(motor, 0, 0);
+    }
 
     // /**
     //  * Read ultrasonic sensor.
