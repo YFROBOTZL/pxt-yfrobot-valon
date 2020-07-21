@@ -242,7 +242,7 @@ namespace valon {
     }
 
     let initialized = false
-    let neoStrip: valon.Strip;
+    // let neoStrip: valon.Strip;
     let distanceBuf = 0;
 
     function clamp(value: number, min: number, max: number): number {
