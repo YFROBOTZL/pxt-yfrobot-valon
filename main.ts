@@ -424,7 +424,7 @@ namespace valon {
         /**
          * Send all the changes to the strip.
          */
-        //% blockId="valon_eyes_show" block="%strip|show" 
+        //% blockId="valon_eyes_show" block="%strip |show" 
         //% strip.defl=strip
         //% weight=35
         show() {
