@@ -9,11 +9,16 @@
     },
     "files": [
         "README.md",
+        "_locales/zh-CN/valon-strings.json",
+        "_locales/zh-TW/valon-strings.json",
         "main.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "public": true,
+    "supportedTargets": [
+        "microbit"
+    ],
     "preferredEditor": "tsprj"
 }
