@@ -209,29 +209,29 @@ enum IrProtocol {
 //% color="#7BD239" weight=10 icon="\uf1b0"
 namespace valon {
     // motor pin 
-    let valonMotorLD = DigitalPin.P13;
-    let valonMotorLA = AnalogPin.P14;
-    let valonMotorRD = DigitalPin.P15;
-    let valonMotorRA = AnalogPin.P16;
+    let valonMotorLD = DigitalPin.P13
+    let valonMotorLA = AnalogPin.P14
+    let valonMotorRD = DigitalPin.P15
+    let valonMotorRA = AnalogPin.P16
     // ultrasonic pin
-    let valonUltrasonicTrig = DigitalPin.P5;
-    let valonUltrasonicEcho = DigitalPin.P11;
+    let valonUltrasonicTrig = DigitalPin.P5
+    let valonUltrasonicEcho = DigitalPin.P11
     // patrol pin
-    let valonPatrolLeft = DigitalPin.P1;
-    let valonPatrolMiddle = DigitalPin.P2;
-    let valonPatrolRight = DigitalPin.P8;
+    let valonPatrolLeft = DigitalPin.P1
+    let valonPatrolMiddle = DigitalPin.P2
+    let valonPatrolRight = DigitalPin.P8
 
     //
-    let valonEyesPin = DigitalPin.P11;
+    let valonEyesPin = DigitalPin.P11
 
     // IR
-    let irState: IrState;
+    let irState: IrState
 
-    const MICROBIT_MAKERBIT_IR_NEC = 777;
-    const MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID = 789;
-    const MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID = 790;
-    const IR_REPEAT = 256;
-    const IR_INCOMPLETE = 257;
+    const MICROBIT_MAKERBIT_IR_NEC = 777
+    const MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID = 789
+    const MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID = 790
+    const IR_REPEAT = 256
+    const IR_INCOMPLETE = 257
 
     interface IrState {
         protocol: IrProtocol;
@@ -242,8 +242,8 @@ namespace valon {
     }
 
     let initialized = false
-    let neoStrip: valon.Strip;
-    let distanceBuf = 0;
+    let neoStrip: valon.Strip
+    let distanceBuf = 0
 
     function clamp(value: number, min: number, max: number): number {
         return Math.max(Math.min(max, value), min);
@@ -261,9 +261,9 @@ namespace valon {
     export function writeLED(ledn: ValonLED, ledswitch: ValonLEDswitch): void {
         led.enable(false);
         if (ledn == ValonLED.LEDLeft) {
-            pins.digitalWritePin(DigitalPin.P10, ledswitch)
+            pins.digitalWritePin(DigitalPin.P10, ledswitch);
         } else if (ledn == ValonLED.LEDRight) {
-            pins.digitalWritePin(DigitalPin.P9, ledswitch)
+            pins.digitalWritePin(DigitalPin.P9, ledswitch);
         } else {
             return
         }
