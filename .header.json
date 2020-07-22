@@ -1,6 +1,6 @@
 {
     "target": "microbit",
-    "targetVersion": "3.1.1",
+    "targetVersion": "3.0.20",
     "name": "valon",
     "meta": {},
     "editor": "tsprj",
@@ -8,8 +8,8 @@
     "pubCurrent": false,
     "_rev": null,
     "id": "f1f5781f-94f0-4f62-44a6-1d42146044ba",
-    "recentUse": 1595335598,
-    "modificationTime": 1595335598,
+    "recentUse": 1595388442,
+    "modificationTime": 1595388437,
     "blobId": null,
     "blobVersion": null,
     "blobCurrent": false,

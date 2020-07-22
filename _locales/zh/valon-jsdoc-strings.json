@@ -1,5 +1,0 @@
-{
-  "valon.writeLED": "设置LED",
-  "valon.writeLED|param|ledn": "LED号",
-  "valon.writeLED|param|ledswitch": "LED状态"
-}
