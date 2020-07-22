@@ -1,0 +1,10 @@
+{
+    "valon.writeLED": "设置LED狀態",
+    "valon.writeLED|block": "LED 燈 |%ledn 保持 |%ledswitch",
+    "valon.writeLED|param|ledn": "LED號",
+    "valon.writeLED|param|ledswitch": "LED狀態",
+    "ValonLED.LEDLeft|block": "左側",
+    "ValonLED.LEDRight|block": "右側",
+    "ValonLEDswitch.TurnOn|block": "開",
+    "ValonLEDswitch.TurnOff|block": "關"    
+}
