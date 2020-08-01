@@ -5,6 +5,8 @@ valon.motorRun(valon.Motors.MAll, valon.Dir.CCW, 100)
 basic.pause(1000)
 valon.motorStop(valon.Motors.MAll)
 
+valon.Ultrasonic(0)
+
 let eyes = valon.create(2, valon.EyesMode.RGB)
 eyes.setEyesColor(valon.RGBEYES.EyesLeft, valon.colors(valon.EyesColors.Red))
 eyes.setBrightness(255)
