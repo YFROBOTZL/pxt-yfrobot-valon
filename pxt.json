@@ -1,6 +1,6 @@
 {
     "name": "Valon-I",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "YFRobot Valon MakeCode Extensions For Micro:bit",
     "license": "MIT",
     "dependencies": {
@@ -9,7 +9,6 @@
     },
     "files": [
         "valon.ts",
-        "enums.d.ts",
         "_locales/zh-cn/valon-strings.json",
         "_locales/zh-tw/valon-strings.json",
         "README.md"
