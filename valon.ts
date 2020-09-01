@@ -9,14 +9,6 @@
  * @author [email](yfrobot@qq.com)
  * @date  2020-07-22
 */
-let valoncb: Action
-let valonmycb: Action
-let valone = "1"
-let valonparam = 0
-let alreadyInit = 0
-let IrPressEvent = 0
-const MOTER_ADDRESSS = 0x10
-
 
 // ultrasonic pin
 let valonUltrasonicTrig = DigitalPin.P5
@@ -38,26 +30,10 @@ enum PingUnit {
     //% block="cm"
     Centimeters,
 }
-enum state {
-    state1 = 0x10,
-    state2 = 0x11,
-    state3 = 0x20,
-    state4 = 0x21
-}
-interface KV {
-    key: state;
-    action: Action;
-}
+
 
 //% color="#7BD239" weight=10 icon="\uf1b0" block="Valon"
 namespace valon {
-
-    let kbCallback: KV[] = []
-
-    export class Packeta {
-        public mye: string;
-        public myparam: number;
-    }
 
     // IR
     let irState: IrState
