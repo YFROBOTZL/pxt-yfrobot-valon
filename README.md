@@ -1,7 +1,7 @@
  
 # Valon-I
 
-[Valon is an easy-to-use programming educational Robot](http://www.yfrobot.com/wiki/index.php?title=Valon-I)
+[Valon is an easy-to-use programming educational Robot](http://www.yfrobot.com.cn/wiki/index.php?title=Valon-I)
 
 [Valon-I](https://item.taobao.com/item.htm?id=620974170340)
 

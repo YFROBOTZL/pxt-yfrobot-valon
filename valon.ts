@@ -1,5 +1,5 @@
 /** 
- * @file pxt-valon/valon.ts
+ * @file pxt-yfrobot-valon/valon.ts
  * @brief YFROBOT's VALON makecode library.
  * @n This is a MakeCode graphical programming education robot.
  * 
