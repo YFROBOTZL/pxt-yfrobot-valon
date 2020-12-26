@@ -32,7 +32,7 @@ enum PingUnit {
 }
 
 
-//% color="#7BD239" weight=10 icon="\uf1b0" block="Valon"
+//% color="#7BD239" weight=10 icon="\uf1b0"
 namespace valon {
 
     // IR
