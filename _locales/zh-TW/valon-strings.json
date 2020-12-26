@@ -74,7 +74,7 @@
     "valon.create|block":"RGBEyes初始化 %numleds|顆LED,模式 %mode",
     "valon.hsl|block":"色相 %h|飽和度 %s|亮度 %l",
     "valon.irButtonCode|block": "紅外按鍵%button|值",
-    "valon.irButton|block": "IR button",
+    "valon.irButton|block": "紅外按鍵值",
     "valon.motorRun|block": "電機|%index|方向|%direction|速度|%speed",
     "valon.motorStop|block": "電機 停止|%motors",
     "valon.onIrButton|block": "當紅外按鍵 %button| %action",
