@@ -39,6 +39,7 @@
   "valon.onIrButton|param|action": "the trigger action",
   "valon.onIrButton|param|button": "the button to be checked",
   "valon.onIrButton|param|handler": "body code to run when event is raised",
+  "valon.enablePatrol": "Enable or Disable line tracking sensor.",
   "valon.readPatrol": "Read line tracking sensor.",
   "valon.readPatrol|param|patrol": "patrol sensor number.",
   "valon.rgb": "Converts red, green, blue channels into a RGB color",

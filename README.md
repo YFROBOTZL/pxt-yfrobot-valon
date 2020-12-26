@@ -29,6 +29,7 @@ valon.motorStop(valon.Motors.ML)
 * Read line tracking sensor
 
 ```blocks
+valon.enablePatrol(valon.PatrolEnable.PatrolOff)
 serial.writeNumber(valon.readPatrol(valon.Patrol.PatrolLeft))
 ```
 

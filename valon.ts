@@ -68,6 +68,13 @@ namespace valon {
         CCW = 0x1
     }
 
+    export enum PatrolEnable {
+        //% blockId="PatrolOn" block="ON"
+        PatrolOn = 0x01,
+        //% blockId="PatrolOff" block="OFF"
+        PatrolOff = 0x00
+    }
+
     export enum Patrol {
         //% blockId="patrolLeft" block="left"
         PatrolLeft = 1,
@@ -81,7 +88,9 @@ namespace valon {
         //% blockId="LEDLeft" block="left"
         LEDLeft = 10,
         //% blockId="LEDRight" block="right"
-        LEDRight = 9
+        LEDRight = 9,
+        //% blockId="LEDAll" block="all"
+        LEDAll = 0
     }
 
     export enum LEDswitch {
@@ -232,6 +241,9 @@ namespace valon {
             pins.digitalWritePin(DigitalPin.P10, ledswitch);
         } else if (ledn == LED.LEDRight) {
             pins.digitalWritePin(DigitalPin.P9, ledswitch);
+        } else if (ledn == LED.LEDAll){
+            pins.digitalWritePin(DigitalPin.P10, ledswitch);
+            pins.digitalWritePin(DigitalPin.P9, ledswitch);
         } else {
             return
         }
@@ -315,10 +327,17 @@ namespace valon {
     }
 
     /**
-      * enable line tracking sensor.
+      * Enable or Disable line tracking sensor.
+      * @param enable line tracking sensor enable signal(0 or 1), eg: valon.PatrolEnable.PatrolOn
       */
-    function enablePatrol(enable: number): void {
+    //% weight=71
+    //% blockId=Patrol_enable block="%enable line tracking sensor"
+    //% patrol.fieldEditor="gridpicker" patrol.fieldOptions.columns=2 
+    export function enablePatrol(enable: PatrolEnable): void {
         pins.digitalWritePin(DigitalPin.P12, enable);
+        pins.setPull(DigitalPin.P1, PinPullMode.PullNone)
+        pins.setPull(DigitalPin.P2, PinPullMode.PullNone)
+        pins.setPull(DigitalPin.P8, PinPullMode.PullNone)
     }
 
     /**
@@ -329,7 +348,6 @@ namespace valon {
     //% blockId=read_Patrol block="read %patrol line tracking sensor"
     //% patrol.fieldEditor="gridpicker" patrol.fieldOptions.columns=2 
     export function readPatrol(patrol: Patrol): number {
-        enablePatrol(1);
         if (patrol == Patrol.PatrolLeft) {
             return pins.digitalReadPin(valonPatrolLeft)
         } else if (patrol == Patrol.PatrolMiddle) {
