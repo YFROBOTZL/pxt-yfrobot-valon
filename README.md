@@ -43,6 +43,7 @@ valon.writeLED(valon.LED.LEDLeft, valon.LEDswitch.turnOn)
 ```blocks
 basic.showNumber(valon.irButtonCode())
 ```
+Support infrared mini controller and [infrared joystick controller](https://item.taobao.com/item.htm?id=623707734052)
 
 
 ## License
