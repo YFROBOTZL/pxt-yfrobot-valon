@@ -254,7 +254,7 @@ namespace valon {
     }
 
     /**
-     * Set the direction and speed of Valon motor.
+     * Set the direction and speed of valon motor.
      * @param index motor left/right/all
      * @param direction direction to turn
      * @param speed speed of motors (0 to 255). eg: 120
@@ -285,7 +285,7 @@ namespace valon {
     }
 
     /**
-     * Stop the Valon motor.
+     * Stop the valon motor.
      */
     //% weight=89
     //% blockId=motor_motorStop block="motor |%motor stop"
