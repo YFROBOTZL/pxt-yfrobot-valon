@@ -31,19 +31,17 @@ enum PingUnit {
     Centimeters,
 }
 
-
 //% color="#7BD239" weight=10 icon="\uf1b0"
 namespace valon {
 
     // IR
-    let irState: IrState
-
     const MICROBIT_MAKERBIT_IR_NEC = 777
     const MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID = 789
     const MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID = 790
     const IR_REPEAT = 256
     const IR_INCOMPLETE = 257
 
+    let irState: IrState
     interface IrState {
         protocol: IrProtocol;
         command: number;
@@ -146,6 +144,7 @@ namespace valon {
         Black = 0x000000
     }
 
+    // IR
     export enum IrProtocol {
         //% block="Keyestudio"
         Keyestudio = 0,
@@ -623,6 +622,9 @@ namespace valon {
         CounterClockwise,
         Shortest
     }
+
+    /***************** IR *******************/
+    
     function pushBit(bit: number): number {
         irState.bitsReceived += 1;
         if (irState.bitsReceived <= 8) {
